@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="/data/soft/resin/log/tbk-ymm.tracking.log" />
+        <param name="DatePattern" value=".yyyyMMdd" ></param>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%-5p %d{yyyy-MM-dd HH:mm:ss.SSS}] %l [%m]%n" />
+        </layout>
+    </appender>
+    <logger name="com.tbk.ymm" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="file" />
+    </logger>
+    <logger name="net.paoding.rose" additivity="false">
+        <level value="${log4j_level}" />
+        <appender-ref ref="file" />
+    </logger>
+
+    <appender class="com.xiaomi.web.miliao.access.log4j.AccessAppender" name = "MiuiStatistics_Scribe">
+        <param name="encoding" value="utf-8" />
+        <param name="scribeHost" value="127.0.0.1" ></param>
+        <param name="scribePort" value="1463" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="\t%d{yyyy-MM-dd HH:mm:ss}\t%m%n" />
+        </layout>
+        <param name="showIp" value="true" ></param>
+    </appender>
+</log4j:configuration>
