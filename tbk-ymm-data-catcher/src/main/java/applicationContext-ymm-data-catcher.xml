@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-lazy-init="true">
+
+	<context:annotation-config />
+    <context:component-scan base-package="com.tbk.ymm">
+    </context:component-scan>
+    
+    
+	<!-- ApplicationContext注入roseBeanFactory -->
+	<bean id="roseBeanFactory" class="com.tbk.ymm.data.catcher.utils.RoseBeanFactory"
+		lazy-init="false"></bean>
+    
+	<bean id="jade.dataSource.com.tbk.ymm.data.catcher.dao.ymm" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://106.187.44.210:3306/ymm_main?useUnicode=true&amp;characterEncoding=utf8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="qdw92123"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="3600000"></property>
+		<property name="minEvictableIdleTimeMillis" value="3600000"></property>
+	</bean>
+
+</beans>
