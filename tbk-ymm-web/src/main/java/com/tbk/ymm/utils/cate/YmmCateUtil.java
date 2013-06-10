@@ -1,5 +1,7 @@
 package com.tbk.ymm.utils.cate;
 
+import com.tbk.ymm.commons.consts.YmmConsts;
+
 /**
  * @author David (qidawei@xiaomi.com)
  */
@@ -20,6 +22,21 @@ public class YmmCateUtil {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * @param articleCateId
+	 * @return
+	 */
+	public static int getLv2ArticleCateId(int articleCateId) {
+		switch (articleCateId) {
+			case YmmConsts.SHOPPING_CATE_ID :
+				return YmmConsts.SHOPPING_DEF_LV2_CATE_ID;
+			case YmmConsts.EXPERIENCE_CATE_ID :
+				return YmmConsts.EXPERIENCE_DEF_LV2_CATE_ID;
+			default :
+				return articleCateId;
+		}
 	}
 
 }

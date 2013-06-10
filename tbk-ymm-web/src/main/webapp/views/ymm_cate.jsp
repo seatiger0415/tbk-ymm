@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%-- <%@ page isELIgnored="false" %> 在web.xml中的web-app版本设置不是2.4的情况下，默认不能使用EL表达式，需要这一句设置一下--%>
@@ -54,12 +55,11 @@
 							<p>回到首页</p>						
 						</div>
 					</div>
-				</div>
-				<!--  
+				</div> 
 				<div class="list-filter-inner">
 					<ul class="list-filter-status">
-						<li class="curr"><a href="${YMM_DOMAIN}/cate/${curCid}" target="_self">小编精选</a></li>
-						<li class="middle"><a href="#" target="_self">7天最热</a></li>
+						<li class="curr"><a href="${YMM_DOMAIN}/cate/${curCid}" target="_self">商品精选</a></li>
+						<li class="middle"><a href="#" target="_self">购物攻略</a></li>
 					</ul>
 					<div class="list-filter-price">
 						<span class="tt">价格：</span>
@@ -82,7 +82,6 @@
 						</ul>
 					</div>
 				</div>
-				-->
 			</div>
 			<div>
 				<div class="prlist">
