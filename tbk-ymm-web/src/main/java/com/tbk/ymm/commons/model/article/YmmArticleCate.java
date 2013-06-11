@@ -20,20 +20,10 @@ public class YmmArticleCate {
 	private int parentId;
 	private int isParent = IS_P_NO;
 	private int status = STATUS_NORMAL;
+	//
 
 	private Date createTime;
 	private Date updateTime;
-
-	// 冗余字段
-	private boolean selected; // 是否被选中
-
-	public boolean selected() {
-		return selected;
-	}
-
-	public void buildSelected(boolean selected) {
-		this.selected = selected;
-	}
 
 	// --------------------------
 

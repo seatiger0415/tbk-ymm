@@ -56,32 +56,7 @@
 						</div>
 					</div>
 				</div> 
-				<div class="list-filter-inner">
-					<ul class="list-filter-status">
-						<li class="curr"><a href="${YMM_DOMAIN}/cate/${curCid}" target="_self">商品精选</a></li>
-						<li class="middle"><a href="#" target="_self">购物攻略</a></li>
-					</ul>
-					<div class="list-filter-price">
-						<span class="tt">价格：</span>
-						<ul>
-							<li class="curr">
-								<a href="#" target="_self">全部</a>
-							</li>
-							<li class="">
-								<a href="#" target="_self">0-50</a>
-							</li>
-							<li class="">
-								<a href="#" target="_self">51-200</a>
-							</li>
-							<li class="">
-								<a href="#" target="_self">201-500</a>
-							</li>
-							<li class="">
-								<a href="#" target="_self">500以上</a>
-							</li>
-						</ul>
-					</div>
-				</div>
+				<%@ include file="/views/inc/cate_filter_bar.inc"%>
 			</div>
 			<div>
 				<div class="prlist">
@@ -107,7 +82,16 @@
 						</c:forEach>
 					</div>
 				</div>
+				<!-- pager -->
 				<c:set var="resultView" value="${itemResultView}"/>
+				<c:set var="url" value="${YMM_DOMAIN}/cate/${catePageParam.cateId}"/>
+				<c:set var="extraParams" value=""/>
+				<c:if test="${catePageParam.smallPrice > 0}">
+					<c:set var="extraParams" value="${extraParams}&smallPrice=${catePageParam.smallPrice}"/>
+				</c:if>
+				<c:if test="${catePageParam.bigPrice > 0}">
+					<c:set var="extraParams" value="${extraParams}&bigPrice=${catePageParam.bigPrice}"/>
+				</c:if>
                 <%@ include file="/common/pager.jsp" %>
                 
 				<!--  延迟加载的功能

@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/goods_bc.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/goods_common.css">		
 	<link rel="stylesheet" type="text/css" href="/static/css/home.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/ymm_home.css">
 	
 	<%@ include file="/common/common_head_js.jsp" %>
 </head>
@@ -37,17 +38,28 @@
 				<div class="container cls">
 					<a class="to-fix" style="position: relative; left: 0px; top: -65px; width">&nbsp;</a>
 					<div class="category-moudles">
-						<div class="category-wrap" style="height:300px;">
+						<div class="category-wrap">
 							<div class="category-title-wrap">
 								<h2 class="category-title"><a href="${YMM_DOMAIN}/cate/${item.navigationCate.id}" target="_blank">${item.navigationCate.name}</a></h2>
 								<div class="category-title-desc"><a href="${YMM_DOMAIN}/cate/${item.navigationCate.id}" target="_blank">每日精选</a></div>
 							</div>
-							<div class="category-tag-wrap" style="height:190px;">
-								<!--  <a href="#" target="_blank" class="special">Cate2[0]</a>-->
+							<div class="category-tag-wrap">
 								<c:forEach var="innerItem" items="${item.itemCateList}" varStatus="status">
 									<a href="${YMM_DOMAIN}/cate/${innerItem.cid}" target="_blank">${innerItem.name}</a>
 								</c:forEach>
 								<a href="${YMM_DOMAIN}/cate/${item.navigationCate.id}" target="_blank"><span class="category-tag-txt">更多</span><i class="ico-triangle"></i></a>
+							</div>
+							<div class="category-article-wrap">
+								<ul>
+									<c:forEach begin="0" end="4" var="articleItem" items="${item.articleList}" varStatus="status">
+										<li>
+											<a href="${YMM_DOMAIN}/article/${articleItem.id}" target="_blank">${articleItem.title}</a>
+										</li>
+									</c:forEach>
+									<li style="float:right;">
+										<a href="${YMM_DOMAIN}/article/cate/${item.articleCateId}" target="_blank"><span class="category-tag-txt">更多&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><i class="ico-triangle"></i></a>
+									</li>
+								</ul>
 							</div>
 						</div>
 						<ul class="category-list">

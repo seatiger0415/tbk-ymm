@@ -2,6 +2,8 @@ package com.tbk.ymm.commons.model.article;
 
 import java.util.Date;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * 文章模型
  * 
@@ -9,6 +11,7 @@ import java.util.Date;
  */
 public class YmmArticle {
 
+	private static final int SIMPLE_TITLE_LEN = 15;
 	public static final String TABLE = "ymm_article";
 	public static final int STATUS_NORMAL = 1;
 	public static final int STATUS_DELETE = -1;
@@ -20,9 +23,25 @@ public class YmmArticle {
 	private String content;
 	private String brief;
 	private int status = STATUS_NORMAL;
+	private int rank = 0;
 
 	private Date createTime;
 	private Date updateTime;
+
+	/**
+	 * 带截断的文章标题
+	 * 
+	 * @return
+	 */
+	public String getSimpleTitle() {
+		if (StringUtils.isEmpty(title)) {
+			return "";
+		}
+		if (title.length() <= SIMPLE_TITLE_LEN) {
+			return title;
+		}
+		return title.substring(0, SIMPLE_TITLE_LEN);
+	}
 
 	// --------------------------------
 
@@ -96,6 +115,14 @@ public class YmmArticle {
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 
 }

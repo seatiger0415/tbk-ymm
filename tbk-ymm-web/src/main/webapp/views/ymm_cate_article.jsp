@@ -7,8 +7,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">	
 	<meta name="keywords" content="怀孕,防辐射服,孕妇,孕妇装,孕妇服装,孕妇内衣,导购">
-	<meta name="description" content="怀孕 购物攻略">
-	<title>孕妈妈  购物攻略</title>
+	<meta name="description" content="孕妈妈良品导购,有品质又实用的孕妈妈导购网站,为孕妈妈们提供靠谱和精致的物品推荐。">
+	<title>孕妈妈  最实用的孕妈妈导购网站</title>
 	<!--  <link rel="shortcut icon" href="http://www.leho.com/favicon.ico" type="image/x-icon"> -->
 
 	<link rel="stylesheet" type="text/css" href="/static/css/goods_bc.css">
@@ -23,10 +23,6 @@
 	<script src="/static/js/logger.js"></script>
 	<link href="/static/css/bdsstyle.css" rel="stylesheet" type="text/css">
 	<link href="/static/css/article_cate.css" rel="stylesheet" type="text/css">
-	<style>
-		.list-filter{border-bottom:1px solid #d9d9d9;padding-bottom: 0px;background-color: #F3F3F3;}
-		.list-filter-status li{width:160px; height:32px;font-size:12px;}
-	</style>	
 </head>
 
 <body>
@@ -38,68 +34,66 @@
 		<!-- 网站的统一的头 -->
 		<%@ include file="/common/common_body_head.jsp"%>
 		
-		<div id="body" class="body-body">	
-			<div class="list-filter">				
-				<div class="list-filter-inner">
-					<ul class="list-filter-status">
-						<c:forEach var="item" items="${articleCateList}">
-							<li <c:if test="${curArticleCateId == item.id}">class="curr"</c:if>>
-								<a href="${YMM_DOMAIN}/admin/article/cate/${item.id}" target="_self">${item.name}</a>
-							</li>
+		<div id="body">	
+			<div class="list-filter">
+				<div class="list-filter-category" id="tagTool">
+					<div class="list-filter-inner">
+						<c:forEach var="item" items="${subCateList}">
+							<a class="tag<c:if test='${item.selected()}'> curr</c:if>" 
+								href="${YMM_DOMAIN}/cate/${item.cid}">${item.name}</a>
 						</c:forEach>
-					</ul>				
+					</div>
 				</div>
+				<div class="list-filter-category list-filter-category-fixed cls" id="tagToolFixed" style="display:none;">
+					<div class="list-filter-inner">
+						<div class="category-wrapper cls">
+							<c:forEach var="item" items="${subCateList}">
+							<a class="tag<c:if test='${item.selected()}'> curr</c:if>" 
+								href="${YMM_DOMAIN}/cate/${item.cid}">${item.name}</a>
+						</c:forEach>
+						</div>
+						<div class="header-module-user-wrap">
+							<p>回到首页</p>						
+						</div>
+					</div>
+				</div> 
+				<%@ include file="/views/inc/cate_filter_bar.inc"%>
 			</div>
-			<div class="article-body">
-				<div class="article-list">
-					<form action="${YMM_DOMAIN}/admin/article/update" method="POST">
-						<table>
-							<tr>
-								<td>id:</td>
-								<td><input type="text" name="article.id" value="${article.id}" size="20"/></td>
-							</tr>
-							<tr>
-								<td>类目id:</td>
-								<td><input type="text" name="article.articleCateId" value="${article.articleCateId}" size="20"/></td>
-							</tr>
-							<tr>
-								<td>文章系列id:</td>
-								<td><input type="text" name="article.articleSeriesId" value="${article.articleSeriesId}" size="20"/></td>
-							</tr>
-							<tr>
-								<td>status:</td>
-								<td><input type="text" name="article.status" value="${article.status}" size="20"/></td>
-							</tr>
-							<tr>
-								<td>rank:</td>
-								<td><input type="text" name="article.rank" value="${article.rank}" size="20"/></td>
-							</tr>
-							<tr>
-								<td>创建时间:</td>
-								<td><input type="text" name="article.createTime" value="${article.createTime}" size="20"/></td>
-							</tr>
-							<tr>
-								<td>更新时间:</td>
-								<td><input type="text" name="article.updateTime" value="${article.updateTime}" size="20" disabled="true" /></td>
-							</tr>
-							<tr>
-								<td>title:</td>
-								<td><textarea name="article.title" cols= "100" rows="1">${article.title}</textarea></td>
-							</tr>
-							<tr>
-								<td>content:</td>
-								<td><textarea name="article.content" cols= "150" rows="20">${article.content}</textarea></td>
-							</tr>
-							<tr>
-								<td>brief:</td>
-								<td><textarea name="article.brief" cols= "100" rows="10">${article.brief}</textarea></td>
-							</tr>
-						</table>
-						<input type="submit" value="提交" />
-						<input type="reset" value="清除" />
-					</form>
+			<div class="body-body">
+				<div class="prlist">
+					<div class="prlist-inner">						
+						<div class="article-body">
+							<div class="article-list">
+								<c:forEach var="item" items="${articleList}">
+									<table cellpadding="0" cellspacing="0" class="article-tilte-outline">
+										<tbody>
+											<tr>
+												<td class="f">
+													<h3 class="t">
+														<a href="${YMM_DOMAIN}/article/${item.id}">
+															<em class="article-title">${item.title}</em>
+														</a>
+													</h3>     
+													<div class="c-abstract">${item.brief}</div>
+											    </td>
+											</tr>
+										</tbody>
+									</table>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
 				</div>
+				<c:set var="resultView" value="${itemResultView}"/>
+                <%@ include file="/common/pager.jsp" %>
+                
+				<!--  延迟加载的功能
+				<div id="loading" class="loading loading-26" style="display: none;">
+					<i></i>加载中……
+				</div>
+				-->
 			</div>
+				
 			<!-- body最下面的轮播广告部分-->
 			<%--@ include file="/common/common_bottom_ad.jsp"--%>
 		</div>

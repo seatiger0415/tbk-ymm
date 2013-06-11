@@ -15,12 +15,14 @@ public class ArticleUtil {
 	public static void replaceWithHtmlSymbol(YmmArticle article) {
 		if (null != article.getContent()) {
 			String content = article.getContent();
-			content.replaceAll(" ", "&nbsp;");
+			content = content.replaceAll(" ", "&nbsp;");
+			content = content.replaceAll("<s>", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 			article.setContent(content);
 		}
 		if (null != article.getBrief()) {
 			String brief = article.getBrief();
-			brief.replaceAll(" ", "&nbsp;");
+			brief = brief.replaceAll(" ", "&nbsp;");
+			brief = brief.replaceAll("<s>", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 			article.setBrief(brief);
 		}
 	}

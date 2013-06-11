@@ -24,7 +24,7 @@ public class YmmArticleServiceImpl implements YmmArticleService {
 	@Override
 	public List<YmmArticle> getListByArticleCateId(int articleCateId) {
 		// TODO cache
-		return ymmArticleDAO.getListByCid(articleCateId);
+		return ymmArticleDAO.getListByCid(articleCateId, 1000);
 	}
 
 }

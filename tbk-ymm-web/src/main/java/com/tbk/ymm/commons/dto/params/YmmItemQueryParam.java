@@ -15,6 +15,8 @@ public class YmmItemQueryParam {
 	// 基础条件
 	private long cid = 0;
 	private List<Long> cidList = null;
+	private int smallPrice;
+	private int bigPrice;
 	// 分页有关
 	private int curPage = 0;
 	private int pageSize = 0;
@@ -43,6 +45,22 @@ public class YmmItemQueryParam {
 
 	public void setCid(long cid) {
 		this.cid = cid;
+	}
+
+	public int getSmallPrice() {
+		return smallPrice;
+	}
+
+	public void setSmallPrice(int smallPrice) {
+		this.smallPrice = smallPrice;
+	}
+
+	public int getBigPrice() {
+		return bigPrice;
+	}
+
+	public void setBigPrice(int bigPrice) {
+		this.bigPrice = bigPrice;
 	}
 
 	public int getCurPage() {

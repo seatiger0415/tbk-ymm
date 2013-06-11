@@ -39,11 +39,13 @@ public class YmmItemsServiceImpl implements YmmItemsService {
 		List<Long> cidList = param.getCidList();
 		int curPage = param.getCurPage();
 		int pageSize = param.getPageSize();
-		List<YmmFavoriteItem> favItemList = ymmFavoriteItemLogic.
-				getByCidListInSellCountOrder(cidList, curPage * pageSize, pageSize);
+		int smallPrice = param.getSmallPrice();
+		int bigPrice = param.getBigPrice();
+		List<YmmFavoriteItem> favItemList = ymmFavoriteItemLogic.getByCidListAndPrice(cidList, smallPrice, bigPrice,
+				curPage * pageSize, pageSize);
 		List<YmmItem> itemList = buildItemList(favItemList);
 		// TODO cache
-		int count = ymmFavoriteItemLogic.getCountByCidList(cidList);
+		int count = ymmFavoriteItemLogic.getCountByCidListAndPrice(cidList, smallPrice, bigPrice);
 		resultView.setCurPage(curPage);
 		resultView.setPageSize(pageSize);
 		resultView.setCountAll(count);

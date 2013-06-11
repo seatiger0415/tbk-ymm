@@ -23,9 +23,18 @@ public interface YmmFavoriteItemDAO {
 	 * @param num
 	 * @return
 	 */
+	@SQL("SELECT * FROM ##(:1.tableName) WHERE cid IN (:2) AND item_price >= :3 AND item_price <= :4 " +
+			"ORDER BY sell_count DESC LIMIT :5,:6")
+	public List<YmmFavoriteItem> getByCidListAndPrice(YmmFavoriteItemTable favItemTable,
+			List<Long> cidList, int smallPrice, int bigPrice, int offset, int num);
+
 	@SQL("SELECT * FROM ##(:1.tableName) WHERE cid IN (:2) ORDER BY sell_count DESC LIMIT :3,:4")
-	public List<YmmFavoriteItem> getByCidListInSellCountOrder(YmmFavoriteItemTable favItemTable,
+	public List<YmmFavoriteItem> getByCidList(YmmFavoriteItemTable favItemTable,
 			List<Long> cidList, int offset, int num);
+
+	@SQL("SELECT count(*) FROM ##(:1.tableName) WHERE cid IN (:2) AND item_price >= :3 AND item_price <= :4")
+	public int getCountByCidListAndPrice(YmmFavoriteItemTable favItemTable, List<Long> cidList,
+			int smallPrice, int bigPrice);
 
 	@SQL("SELECT count(*) FROM ##(:1.tableName) WHERE cid IN (:2)")
 	public int getCountByCidList(YmmFavoriteItemTable favItemTable, List<Long> cidList);

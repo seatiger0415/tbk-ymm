@@ -12,12 +12,17 @@ import com.tbk.ymm.data.catcher.commons.model.YmmFavoriteItem;
 public interface YmmFavoriteItemLogic {
 
 	/**
-	 * @param YmmFavoriteItemTable
+	 * @param cidList
+	 * @param smallPrice
+	 *            单位：元
+	 * @param bigPrice
+	 *            单位：元
 	 * @param offset
 	 * @param num
 	 * @return
 	 */
-	public List<YmmFavoriteItem> getByCidListInSellCountOrder(List<Long> cidList, int offset, int num);
+	public List<YmmFavoriteItem> getByCidListAndPrice(List<Long> cidList, int smallPrice,
+			int bigPrice, int offset, int num);
 
 	/**
 	 * 根据trackIidList获取商品列表
@@ -31,7 +36,11 @@ public interface YmmFavoriteItemLogic {
 	 * 获取一个类别下商品的总数
 	 * 
 	 * @param cidList
+	 * @param smallPrice
+	 *            单位：元
+	 * @param bigPrice
+	 *            单位：元
 	 * @return
 	 */
-	public int getCountByCidList(List<Long> cidList);
+	public int getCountByCidListAndPrice(List<Long> cidList, int smallPrice, int bigPrice);
 }

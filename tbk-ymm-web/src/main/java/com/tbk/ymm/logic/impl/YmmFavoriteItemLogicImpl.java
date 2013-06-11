@@ -32,7 +32,8 @@ public class YmmFavoriteItemLogicImpl implements YmmFavoriteItemLogic {
 	private YmmFavoriteItemDAO ymmFavoriteItemDAO;
 
 	@Override
-	public List<YmmFavoriteItem> getByCidListInSellCountOrder(List<Long> cidList, int offset, int num) {
+	public List<YmmFavoriteItem> getByCidListAndPrice(List<Long> cidList, int smallPrice,
+			int bigPrice, int offset, int num) {
 		if (null == cidList || cidList.isEmpty()) {
 			return Collections.emptyList();
 		}
@@ -42,7 +43,13 @@ public class YmmFavoriteItemLogicImpl implements YmmFavoriteItemLogic {
 			return Collections.emptyList();
 		}
 		// TODO cache
-		return ymmFavoriteItemDAO.getByCidListInSellCountOrder(itemTable, cidList, offset, num);
+		if ((smallPrice <= 0 && bigPrice <= 0) || (bigPrice > 0 && smallPrice > bigPrice)) {
+			return ymmFavoriteItemDAO.getByCidList(itemTable, cidList, offset, num);
+		} else {
+			bigPrice = (0 == bigPrice) ? 100000 : bigPrice;
+			return ymmFavoriteItemDAO.getByCidListAndPrice(itemTable, cidList,
+					smallPrice * 100, bigPrice * 100, offset, num);
+		}
 
 	}
 
@@ -61,7 +68,7 @@ public class YmmFavoriteItemLogicImpl implements YmmFavoriteItemLogic {
 	}
 
 	@Override
-	public int getCountByCidList(List<Long> cidList) {
+	public int getCountByCidListAndPrice(List<Long> cidList, int smallPrice, int bigPrice) {
 		if (null == cidList || cidList.isEmpty()) {
 			return 0;
 		}
@@ -70,7 +77,13 @@ public class YmmFavoriteItemLogicImpl implements YmmFavoriteItemLogic {
 			logger.error("YmmFavoriteItemLogicImpl.getCountByCidList.can not get enum YmmFavoriteItemTable");
 			return 0;
 		}
-		return ymmFavoriteItemDAO.getCountByCidList(itemTable, cidList);
+		if ((smallPrice <= 0 && bigPrice <= 0) || (bigPrice > 0 && smallPrice > bigPrice)) {
+			return ymmFavoriteItemDAO.getCountByCidList(itemTable, cidList);
+		} else {
+			bigPrice = (0 == bigPrice) ? 100000 : bigPrice;
+			return ymmFavoriteItemDAO.getCountByCidListAndPrice(itemTable, cidList,
+					smallPrice * 100, bigPrice * 100);
+		}
 	}
 
 	// -------------------------------------

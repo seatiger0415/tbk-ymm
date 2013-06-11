@@ -40,7 +40,7 @@ public class YmmItemLogicImpl implements YmmItemLogic {
 	@Override
 	public List<YmmItem> getByCidListInSellCountOrder(List<Long> lv2CateIdList, long startItemId, int num) {
 		// TODO 目前只有favorite item
-		List<YmmFavoriteItem> favItemList = ymmFavoriteItemLogic.getByCidListInSellCountOrder(lv2CateIdList, 0, num);
+		List<YmmFavoriteItem> favItemList = ymmFavoriteItemLogic.getByCidListAndPrice(lv2CateIdList, 0, 0, 0, num);
 		List<YmmItem> itemList = Lists.newArrayListWithExpectedSize(favItemList.size());
 		// 这里需要把分类信息build进每个商品
 		Map<Long, YmmItemCate> allLv2CateMap = ymmItemCateDAO.getAllLv2CateMap();
@@ -53,5 +53,4 @@ public class YmmItemLogicImpl implements YmmItemLogic {
 		}
 		return itemList;
 	}
-
 }

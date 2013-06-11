@@ -23,6 +23,10 @@
 	<script src="/static/js/logger.js"></script>
 	<link href="/static/css/bdsstyle.css" rel="stylesheet" type="text/css">
 	<link href="/static/css/article_cate.css" rel="stylesheet" type="text/css">
+	<style>
+		.list-filter{border-bottom:1px solid #d9d9d9;padding-bottom: 0px;background-color: #F3F3F3;}
+		.list-filter-status li{width:160px; height:32px;font-size:12px;}
+	</style>
 </head>
 
 <body>

@@ -21,8 +21,10 @@
 				<div class="header-module-other-main">
 					<!-- <span class="header-module-follow-txt">姊妹站</span> -->
 					<a class="life-service-nav" href="${YMM_DOMAIN}/article/cate/shopping" rel="nofollow">孕妈妈购物攻略</a>
+					<!--
 					<i class="login-txt-vertical"></i>
 					<a href="${YMM_DOMAIN}/article/cate/experience" class="life-service-nav" rel="nofollow" >孕妈妈经验谈</a>
+					-->  
 					<i class="login-txt-vertical"></i>
 					<a class="header-module-favorite" href="${YMM_DOMAIN}">网站地图</a>
 					<a class="header-module-favorite" href="javascript:;" onclick="goods.utils.addFavorite(&#39;http://www.yunmama123.com&#39;,&#39;收藏孕妈妈，随时发现精彩分享&#39;);">收藏孕妈妈</a>

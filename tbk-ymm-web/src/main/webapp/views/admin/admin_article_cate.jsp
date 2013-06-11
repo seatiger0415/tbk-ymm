@@ -23,6 +23,10 @@
 	<script src="/static/js/logger.js"></script>
 	<link href="/static/css/bdsstyle.css" rel="stylesheet" type="text/css">
 	<link href="/static/css/article_cate.css" rel="stylesheet" type="text/css">
+	<style>
+		.list-filter{border-bottom:1px solid #d9d9d9;padding-bottom: 0px;background-color: #F3F3F3;}
+		.list-filter-status li{width:160px; height:32px;font-size:12px;}
+	</style>
 </head>
 
 <body>
@@ -67,7 +71,7 @@
 										</h3>     
 										<div class="c-abstract">${item.brief}</div>
 								    </td>
-									<td><input type="button" value="删除" onClick=""/></td>
+									<td align="right" style="width:20em;"><input type="button" value="删除" onClick="removeArticle(${item.id})"/></td>
 								</tr>
 							</tbody>
 						</table>
@@ -78,19 +82,6 @@
 			<%--@ include file="/common/common_bottom_ad.jsp"--%>
 		</div>
 		
-		<!-- 下面应该是右面分享的组件 -->
-		<script type="text/javascript" id="bdshare_js" data="uid=599962&amp;type=slide&amp;img=0&amp;pos=right" src="/static/js/bds_s_v2.js"></script>
-		<script type="text/javascript" id="bdshell_js" src="/static/js/shell_v2.js"></script>
-		<script type="text/javascript">
-			var bds_config = {
-				snsKey:{ bdText : "怀孕了？不知道需要准备什么？快来孕妈妈专业良品导购站看一下吧~",
-						 searchPic : 1,
-						 bdComment : "孕妈妈良品导购,有品质又实用的孕妈妈导购网站,为孕妈妈们提供靠谱和精致的物品推荐。",
-						 bdDesc : "",
-						 bdPic : ""
-					}};
-			document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
-		</script>
 		<script>
 			function removeArticle(articleId){
 				$.POST("/admin/article/remove", 
@@ -104,6 +95,19 @@
 							}
 						});
 			}
+		</script>
+		<!-- 下面应该是右面分享的组件 -->
+		<script type="text/javascript" id="bdshare_js" data="uid=599962&amp;type=slide&amp;img=0&amp;pos=right" src="/static/js/bds_s_v2.js"></script>
+		<script type="text/javascript" id="bdshell_js" src="/static/js/shell_v2.js"></script>
+		<script type="text/javascript">
+			var bds_config = {
+				snsKey:{ bdText : "怀孕了？不知道需要准备什么？快来孕妈妈专业良品导购站看一下吧~",
+						 searchPic : 1,
+						 bdComment : "孕妈妈良品导购,有品质又实用的孕妈妈导购网站,为孕妈妈们提供靠谱和精致的物品推荐。",
+						 bdDesc : "",
+						 bdPic : ""
+					}};
+			document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
 		</script>
 		
 		<!-- 页脚部分 -->
