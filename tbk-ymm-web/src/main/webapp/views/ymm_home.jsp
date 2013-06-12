@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">	
-	<meta name="keywords" content="怀孕,防辐射服,孕妇,孕妇装,孕妇服装,孕妇内衣,导购">
+	<meta name="keywords" content="婧麒防辐射服,孕妇防辐射服,孕妇装,十月妈咪,添香,防辐射服哪个牌子好,孕妇内衣">
 	<meta name="description" content="孕妈妈良品导购,有品质又实用的孕妈妈导购网站,为孕妈妈们提供靠谱和精致的物品推荐。">
 	<title>孕妈妈  最实用的孕妈妈导购网站</title>
 	<!--  <link rel="shortcut icon" href="http://www.leho.com/favicon.ico" type="image/x-icon"> -->
@@ -53,7 +53,7 @@
 								<ul>
 									<c:forEach begin="0" end="4" var="articleItem" items="${item.articleList}" varStatus="status">
 										<li>
-											<a href="${YMM_DOMAIN}/article/${articleItem.id}" target="_blank">${articleItem.title}</a>
+											<a href="${YMM_DOMAIN}/article/${articleItem.id}" target="_blank">${articleItem.simpleTitle}</a>
 										</li>
 									</c:forEach>
 									<li style="float:right;">

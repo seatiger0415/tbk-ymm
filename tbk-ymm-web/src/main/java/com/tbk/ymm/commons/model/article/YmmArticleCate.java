@@ -1,6 +1,7 @@
 package com.tbk.ymm.commons.model.article;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 文章类目
@@ -25,8 +26,18 @@ public class YmmArticleCate {
 	private Date createTime;
 	private Date updateTime;
 
-	// --------------------------
+	// 冗余，如果有需要，可以把本类目下的全部或部分文章信息放到这里
+	private List<YmmArticle> articleList;
 
+	public List<YmmArticle> articleList() {
+		return articleList;
+	}
+
+	public void buildArticleList(List<YmmArticle> articleList) {
+		this.articleList = articleList;
+	}
+
+	// --------------------------
 	public int getId() {
 		return id;
 	}

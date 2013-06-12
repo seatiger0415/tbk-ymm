@@ -17,6 +17,7 @@ import com.tbk.ymm.dao.cate.YmmNavigationCateDAO;
 import com.tbk.ymm.data.catcher.commons.model.YmmItemCate;
 import com.tbk.ymm.service.YmmCateService;
 import com.tbk.ymm.utils.cate.YmmCateUtil;
+import com.tbk.ymm.utils.collections.CollectionUtils;
 
 @Service
 public class YmmCateServiceImpl implements YmmCateService {
@@ -57,6 +58,7 @@ public class YmmCateServiceImpl implements YmmCateService {
 		if (null == navCate) {
 			return ymmCateBarDTO;
 		}
+		ymmCateBarDTO.setCurNavCate(navCate);
 		ymmCateBarDTO.setLv1CateList(getItemCateListByIds(navCate.getLv1ItemCateIdlist()));
 		//
 		List<YmmItemCate> lv2CateList = this.getLv2SubCateList(navCate);
@@ -73,6 +75,22 @@ public class YmmCateServiceImpl implements YmmCateService {
 	public List<YmmNavigationCate> getNavigationCateList() {
 		// TODO cache
 		return ymmNavigationCateDAO.getAllOK();
+	}
+
+	@Override
+	public List<YmmCateBarDTO> getAllCate(List<YmmNavigationCate> navCateList) {
+		List<YmmNavigationCate> localNavCateList = navCateList;
+		if (CollectionUtils.isCollectionEmpty(localNavCateList)) {
+			localNavCateList = this.getNavigationCateList();
+		}
+		//
+		List<YmmCateBarDTO> dtoList = Lists.newArrayList();
+		//
+		for (YmmNavigationCate ymmNavigationCate : localNavCateList) {
+			YmmCateBarDTO ymmCateBarDTO = this.getCateBar(ymmNavigationCate.getId());
+			dtoList.add(ymmCateBarDTO);
+		}
+		return dtoList;
 	}
 
 	// --------------------------------------------------------

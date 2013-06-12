@@ -6,8 +6,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">	
-	<meta name="keywords" content="怀孕,防辐射服,孕妇,孕妇装,孕妇服装,孕妇内衣,导购">
-	<meta name="description" content="怀孕 购物攻略">
+	<meta name="keywords" content="婧麒防辐射服,孕妇防辐射服,孕妇装,十月妈咪,添香,防辐射服哪个牌子好,孕妇内衣">
+	<meta name="description" content="精选孕妈妈购物攻略，为您解决买东西发愁的烦恼">
 	<title>孕妈妈  购物攻略</title>
 	<!--  <link rel="shortcut icon" href="http://www.leho.com/favicon.ico" type="image/x-icon"> -->
 
@@ -77,6 +77,7 @@
 					</c:forEach>
 				</div>
 			</div>
+			<div class="article-bottom"></div>
 			<!-- body最下面的轮播广告部分-->
 			<%--@ include file="/common/common_bottom_ad.jsp"--%>
 		</div>

@@ -33,6 +33,9 @@ public interface YmmArticleDAO {
 			+ YmmArticle.STATUS_NORMAL + " ORDER BY rank ASC LIMIT :2")
 	public List<YmmArticle> getListByCid(int articleCateId, int limited);
 
+	@SQL("SELECT id, article_cate_id, title FROM " + YmmArticle.TABLE + " WHERE article_cate_id IN (:1)")
+	public List<YmmArticle> getTitleListByCateIdList(List<Integer> articleCateIdList);
+
 	// ------------------------------------------------------
 
 	@SQL("INSERT INTO " + YmmArticle.TABLE + "(" + FIELDS + ") VALUES (:1.id, :1.articleCateId, " +

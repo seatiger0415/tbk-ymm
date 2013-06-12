@@ -7,14 +7,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">	
 	<meta name="keywords" content="婧麒防辐射服,孕妇防辐射服,孕妇装,十月妈咪,添香,防辐射服哪个牌子好,孕妇内衣">
-	<meta name="description" content="怀孕 购物攻略 ${article.title}">
-	<title>孕妈妈  购物攻略 ${article.title}</title>
+	<meta name="description" content="孕妈妈良品导购,有品质又实用的孕妈妈导购网站,为孕妈妈们提供靠谱和精致的物品推荐。">
+	<title>孕妈妈  网站地图</title>
 	<!--  <link rel="shortcut icon" href="http://www.leho.com/favicon.ico" type="image/x-icon"> -->
 
 	<link rel="stylesheet" type="text/css" href="/static/css/goods_bc.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/goods_common.css">		
 	<link rel="stylesheet" type="text/css" href="/static/css/list.css">
-
 	<%@ include file="/common/common_head_js.jsp" %>
 	<script>
 		_hmt.push(['_setAutoPageview', false]);
@@ -22,11 +21,11 @@
 	</script>
 	<script src="/static/js/logger.js"></script>
 	<link href="/static/css/bdsstyle.css" rel="stylesheet" type="text/css">
-	<link href="/static/css/article_cate.css" rel="stylesheet" type="text/css">
 	<style>
-		.list-filter{border-bottom:1px solid #d9d9d9;padding-bottom: 0px;background-color: #F3F3F3;}
-		.list-filter-status li{width:160px; height:32px;font-size:12px;}
-	</style>
+	    .prlist-inner table tbody tr td a {
+	            color:#0000FF;
+		}
+    </style>
 </head>
 
 <body>
@@ -38,35 +37,68 @@
 		<!-- 网站的统一的头 -->
 		<%@ include file="/common/common_body_head.jsp"%>
 		
-		<div id="body" class="body-body">	
-			<div class="list-filter">				
-				<div class="list-filter-inner">
-					<ul class="list-filter-status">
-						<c:forEach var="item" items="${articleCateList}">
-							<li <c:if test="${curArticleCateId == item.id}">class="curr"</c:if>>
-								<a href="${YMM_DOMAIN}/article/cate/${item.id}" target="_self">${item.name}</a>
-							</li>
-						</c:forEach>
-						<!--  
-						<li><a href="#" target="_self">孕妇内衣攻略</a></li>
-						<li><a href="#" target="_self">孕妇装攻略</a></li>
-						<li><a href="#" target="_self">孕妇洗护攻略</a></li>
-						<li><a href="#" target="_self">孕营养品攻略</a></li>
-						<li><a href="#" target="_self">其他攻略</a></li>
-						-->
-					</ul>				
+		<div id="body">				
+			<div>
+				<div class="prlist">
+					<div class="prlist-inner">
+						<table cellpadding="0" cellspacing="20" class="article-tilte-outline">
+							<tr>
+								<td>
+									<a href="${YMM_DOMAIN}" target="_blank" style="color:#FF4500;">首页</a>
+							    </td>
+							    <td>
+							    	<c:forEach var="item" items="${navigationList}">
+							    		<a href="${YMM_DOMAIN}/cate/${item.id}" target="_blank">${item.name}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+							    	</c:forEach>					
+							    </td>
+							</tr>
+							<tr></tr>
+							
+							<c:forEach var="item" items="${allCateDTOList}">
+								<tr>
+									<td>
+							    		<a href="${YMM_DOMAIN}/cate/${item.curNavCate.id}" target="_blank" style="color:#FF4500;">${item.curNavCate.name}</a>
+								    </td>
+								    <td>
+								    	<c:forEach var="innerItem" items="${item.lv2CateList}">
+											<a href="${YMM_DOMAIN}/cate/${innerItem.cid}" target="_blank">${innerItem.name}</a>
+											&nbsp;&nbsp;&nbsp;&nbsp;
+										</c:forEach>
+								    </td>
+							    </tr>
+							</c:forEach>
+							<tr></tr>
+							
+							<tr>
+								<td>
+									<a href="${YMM_DOMAIN}/article/cate/shopping" target="_blank" style="color:#FF4500;">孕妈妈购物攻略</a>
+							    </td>
+							    <td>
+								    <c:forEach var="item" items="${shoppingArticleCateList}">
+								    	<a href="${YMM_DOMAIN}/article/cate/${item.id}" target="_blank">${item.name}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								    </c:forEach>
+							    </td>
+							</tr>
+							<tr></tr>
+							<c:forEach var="item" items="${shoppingArticleCateList}">
+								<tr>
+									<td>
+							    		<a href="${YMM_DOMAIN}/article/cate/${item.id}" target="_blank" style="color:#FF4500;">${item.name}</a>
+								    </td>
+								    <td>
+								    	<c:forEach var="innerItem" items="${item.articleList()}">
+											<a href="${YMM_DOMAIN}/article/${innerItem.id}" target="_blank">${innerItem.simpleTitle}</a>
+											&nbsp;&nbsp;&nbsp;&nbsp;
+										</c:forEach>
+								    </td>
+							    </tr>
+							</c:forEach>
+							<tr></tr>
+						</table>
+					</div>
 				</div>
 			</div>
-			<div class="article-body">
-				<div class="article-detail-title">
-					<h3>${article.title}</h3>
-					<br/>
-				</div>
-				<div class="article-detail-content">
-					${article.content}
-				</div>
-			</div>
-			<div class="article-bottom"></div>
+				
 			<!-- body最下面的轮播广告部分-->
 			<%--@ include file="/common/common_bottom_ad.jsp"--%>
 		</div>

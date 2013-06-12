@@ -28,4 +28,14 @@ public interface YmmCateService {
 	 */
 	public List<YmmNavigationCate> getNavigationCateList();
 
+	/**
+	 * 获取所有的分类，按导航类聚类，用于网站地图逇生成；
+	 * 效率比较低，因为复用了getCateBar，重复取了多次导航数据，偶尔调用没事
+	 * 
+	 * @param navCateList
+	 *            导航列表，可以为null，如果为null，内部自己取
+	 * @return
+	 */
+	public List<YmmCateBarDTO> getAllCate(List<YmmNavigationCate> navCateList);
+
 }

@@ -40,4 +40,16 @@ public class YmmArticleCateServiceImpl implements YmmArticleCateService {
 		return ymmArticleCateDAO.getSubList(topId);
 	}
 
+	@Override
+	public List<YmmArticleCate> getAllShoppingArticleCateList() {
+		// TODO cache
+		return ymmArticleCateDAO.getSubList(YmmConsts.SHOPPING_CATE_ID);
+	}
+
+	@Override
+	public List<YmmArticleCate> getAllExperienceArticleCateList() {
+		// TODO cache
+		return ymmArticleCateDAO.getSubList(YmmConsts.EXPERIENCE_CATE_ID);
+	}
+
 }

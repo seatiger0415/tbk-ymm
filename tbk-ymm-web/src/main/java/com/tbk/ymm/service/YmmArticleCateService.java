@@ -16,4 +16,18 @@ public interface YmmArticleCateService {
 	 */
 	public List<YmmArticleCate> getArtileCateList(int curId);
 
+	/**
+	 * 获取所有购物导购攻略的类目列表
+	 * 
+	 * @return
+	 */
+	public List<YmmArticleCate> getAllShoppingArticleCateList();
+
+	/**
+	 * 获取所有孕妈妈经验谈的类目列表
+	 * 
+	 * @return
+	 */
+	public List<YmmArticleCate> getAllExperienceArticleCateList();
+
 }

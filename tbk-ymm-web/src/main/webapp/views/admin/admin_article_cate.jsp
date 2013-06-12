@@ -78,6 +78,7 @@
 					</c:forEach>
 				</div>
 			</div>
+			<div class="article-bottom"></div>
 			<!-- body最下面的轮播广告部分-->
 			<%--@ include file="/common/common_bottom_ad.jsp"--%>
 		</div>

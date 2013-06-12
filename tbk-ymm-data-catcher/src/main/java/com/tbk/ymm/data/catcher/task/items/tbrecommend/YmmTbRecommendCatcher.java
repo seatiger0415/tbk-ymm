@@ -42,7 +42,7 @@ public class YmmTbRecommendCatcher {
 	private static final long CATE_RECOMMEND_TYPE = 1L; // 请求类型，1：类目下热门商品推荐。其他值当非法值处理
 	private static final long ITEM_RECOMMEND_TYPE = 1L; // 查询类型标识符，可传入1-3，1：同类商品推荐，2：异类商品推荐， 3：同店商品推荐。其他值当非法值处理
 	private static final long CATE_RECOMMEND_NUM_ONCE = 20L; // 请求个数，建议获取20个，API好像最多返回50个
-	private static final long ITEM_RECOMMEND_NUM_ONCE = 10L; // 请求个数，建议获取20个，API好像最多返回50个
+	private static final long ITEM_RECOMMEND_NUM_ONCE = 20L; // 请求个数，建议获取20个，API好像最多返回50个
 
 	/**
 	 * 抓取所有孕妇相关叶子节点的推荐的关联商品
