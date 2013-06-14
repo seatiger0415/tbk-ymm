@@ -21,6 +21,8 @@ public class YmmCateBarDTO {
 	private List<YmmNavigationCate> navigationList;
 	//
 	private YmmNavigationCate curNavCate;
+	private YmmItemCate curLv1Cate;
+	private YmmItemCate curLv2Cate;
 	// 当前导航栏下的一级分类列表
 	private List<YmmItemCate> lv1CateList;
 	// 当前导航栏下的二级分类列表
@@ -35,7 +37,8 @@ public class YmmCateBarDTO {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{inputCateId: ").append(inputCateId).append("; inputCateType: ").append(inputCateType)
 				.append("; navigationList size: ").append(navigationList.size()).append("; curNavCate: ")
-				.append(curNavCate).append("; lv1CateList size: ")
+				.append(curNavCate).append("; curLv1Cate: ").append(curLv1Cate).append("; curLv2Cate: ")
+				.append(curLv2Cate).append("; lv1CateList size: ")
 				.append(lv1CateList.size()).append("; lv2CateList size: ").append(lv2CateList.size()).append("}");
 		return sb.toString();
 	}
@@ -97,6 +100,22 @@ public class YmmCateBarDTO {
 
 	public void setCurNavCate(YmmNavigationCate curNavCate) {
 		this.curNavCate = curNavCate;
+	}
+
+	public YmmItemCate getCurLv1Cate() {
+		return curLv1Cate;
+	}
+
+	public void setCurLv1Cate(YmmItemCate curLv1Cate) {
+		this.curLv1Cate = curLv1Cate;
+	}
+
+	public YmmItemCate getCurLv2Cate() {
+		return curLv2Cate;
+	}
+
+	public void setCurLv2Cate(YmmItemCate curLv2Cate) {
+		this.curLv2Cate = curLv2Cate;
 	}
 
 }

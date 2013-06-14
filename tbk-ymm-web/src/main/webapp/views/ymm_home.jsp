@@ -9,7 +9,6 @@
 	<meta name="keywords" content="婧麒防辐射服,孕妇防辐射服,孕妇装,十月妈咪,添香,防辐射服哪个牌子好,孕妇内衣">
 	<meta name="description" content="孕妈妈良品导购,有品质又实用的孕妈妈导购网站,为孕妈妈们提供靠谱和精致的物品推荐。">
 	<title>孕妈妈  最实用的孕妈妈导购网站</title>
-	<!--  <link rel="shortcut icon" href="http://www.leho.com/favicon.ico" type="image/x-icon"> -->
 
 	<link rel="stylesheet" type="text/css" href="/static/css/goods_bc.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/goods_common.css">		

@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- begin 塞在这里吧 -->
+<link rel="shortcut icon" href="/static/img/favicon/favicon-ymm.ico" type="image/x-icon">
+<!-- end -->
 <!-- taobao jssdk -->
 <script src="http://l.tbcdn.cn/apps/top/x/sdk.js?appkey=21522531"></script>
 <script>

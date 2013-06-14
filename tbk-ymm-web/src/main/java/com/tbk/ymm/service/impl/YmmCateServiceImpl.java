@@ -42,9 +42,10 @@ public class YmmCateServiceImpl implements YmmCateService {
 		// 目标：获得导航navigationId，查询出一级、二级cid，并标记被选中的属性
 		//
 		long navigationId = inputCateId;
+		long lv1Cid = 0;
 		long lv2Cid = 0;
 		if (!YmmCateUtil.isNavigationCate(inputCateId)) {
-			long lv1Cid = inputCateId;
+			lv1Cid = inputCateId;
 			ymmCateBarDTO.setInputCateType(CateType.LV1);
 			if (!isLv1Cate(inputCateId)) {
 				lv1Cid = this.getParentCid(inputCateId);
@@ -59,10 +60,12 @@ public class YmmCateServiceImpl implements YmmCateService {
 			return ymmCateBarDTO;
 		}
 		ymmCateBarDTO.setCurNavCate(navCate);
-		ymmCateBarDTO.setLv1CateList(getItemCateListByIds(navCate.getLv1ItemCateIdlist()));
+		List<YmmItemCate> lv1CateList = getItemCateListByIds(navCate.getLv1ItemCateIdlist());
+		this.setCateSelected(ymmCateBarDTO, lv1CateList, lv1Cid, CateType.LV1);
+		ymmCateBarDTO.setLv1CateList(lv1CateList);
 		//
 		List<YmmItemCate> lv2CateList = this.getLv2SubCateList(navCate);
-		this.setCateSelected(lv2CateList, lv2Cid);
+		this.setCateSelected(ymmCateBarDTO, lv2CateList, lv2Cid, CateType.LV2);
 		//
 		ymmCateBarDTO.setLv2CateList(lv2CateList);
 		//
@@ -144,13 +147,21 @@ public class YmmCateServiceImpl implements YmmCateService {
 	}
 
 	/**
-	 * @param itemCateList
-	 * @param lv2Cid
+	 * @param ymmCateBarDTO
+	 * @param cateList
+	 * @param cateId
+	 * @param cateType
 	 */
-	private void setCateSelected(List<YmmItemCate> lv2CateList, long lv2Cid) {
-		for (YmmItemCate ymmItemCate : lv2CateList) {
-			if (null != ymmItemCate && null != ymmItemCate.getCid() && ymmItemCate.getCid() == lv2Cid) {
+	private void setCateSelected(YmmCateBarDTO ymmCateBarDTO, List<YmmItemCate> cateList,
+			long cateId, CateType cateType) {
+		for (YmmItemCate ymmItemCate : cateList) {
+			if (null != ymmItemCate && null != ymmItemCate.getCid() && ymmItemCate.getCid() == cateId) {
 				ymmItemCate.buildSelected(true);
+				if (CateType.LV1.equals(cateType)) {
+					ymmCateBarDTO.setCurLv1Cate(ymmItemCate);
+				} else if (CateType.LV2.equals(cateType)) {
+					ymmCateBarDTO.setCurLv2Cate(ymmItemCate);
+				}
 				return;
 			}
 		}

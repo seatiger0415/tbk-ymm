@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">	
 	<meta name="keywords" content="婧麒防辐射服,孕妇防辐射服,孕妇装,十月妈咪,添香,防辐射服哪个牌子好,孕妇内衣">
-	<meta name="description" content="精选孕妈妈购物攻略，为您解决买东西发愁的烦恼">
+	<meta name="description" content="精选孕妈妈购物攻略,为您解决买东西发愁的烦恼">
 	<title>孕妈妈  最实用的孕妈妈导购网站</title>
 	<!--  <link rel="shortcut icon" href="http://www.leho.com/favicon.ico" type="image/x-icon"> -->
 

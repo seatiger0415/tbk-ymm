@@ -21,4 +21,12 @@ public class YmmConsts {
 	public static final int EXPERIENCE_CATE_ID = 2;
 	public static final int EXPERIENCE_DEF_LV2_CATE_ID = 9;
 
+	//
+	public static final String TITLE_DELIMETER = "_";
+	public static final String KEYWORDS_DELIMETER = ",";
+	public static final String DESCRPTION_DELIMETER = ",";
+
+	//
+	public static final String SITE_NAME = "孕妈妈";
+
 }

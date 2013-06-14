@@ -9,11 +9,11 @@
         </layout>
     </appender>
     <logger name="com.tbk.ymm" additivity="false">
-        <level value="debug" />
+        <level value="info" />
         <appender-ref ref="file" />
     </logger>
     <logger name="net.paoding.rose" additivity="false">
-        <level value="${log4j_level}" />
+        <level value="info" />
         <appender-ref ref="file" />
     </logger>
 
