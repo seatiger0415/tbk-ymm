@@ -52,4 +52,10 @@ public class YmmArticleCateServiceImpl implements YmmArticleCateService {
 		return ymmArticleCateDAO.getSubList(YmmConsts.EXPERIENCE_CATE_ID);
 	}
 
+	@Override
+	public YmmArticleCate getById(int articleCateId) {
+		// TODO cache
+		return ymmArticleCateDAO.getById(articleCateId);
+	}
+
 }

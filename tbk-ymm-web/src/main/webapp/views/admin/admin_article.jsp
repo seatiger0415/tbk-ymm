@@ -30,9 +30,6 @@
 </head>
 
 <body>
-	<!-- 网站最上面的广告 -->
-	<%@ include file="/common/common_top_ad.jsp"%>
-	
 	<!-- begin wrapper 网站所有展示的内容 -->
 	<div id="wrapper">		
 		<!-- 网站的统一的头 -->
@@ -85,6 +82,10 @@
 							<tr>
 								<td>title:</td>
 								<td><textarea name="article.title" cols= "100" rows="1">${article.title}</textarea></td>
+							</tr>
+							<tr>
+								<td>keywords(逗号分隔):</td>
+								<td><textarea name="article.keywords" cols= "100" rows="10">${article.keywords}</textarea></td>
 							</tr>
 							<tr>
 								<td>content:</td>

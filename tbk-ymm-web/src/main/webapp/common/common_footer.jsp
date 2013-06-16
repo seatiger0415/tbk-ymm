@@ -58,8 +58,10 @@
 		<div class="copyright">
 			<div class="copyright-inner">
 				<div class="copyright-info">
-					<p>Copyright &#169; 2011-2013 yunmama123.com版权所有
+					<p>Copyright &#169; 2011-2013 yunmama123.com版权所有 
+						<!--  
 						<a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备12005406号</a>
+						-->
 						孕妈妈导购网&#169;				
 					</p>
 				</div>

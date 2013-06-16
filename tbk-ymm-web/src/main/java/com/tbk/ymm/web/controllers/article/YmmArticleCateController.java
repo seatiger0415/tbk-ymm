@@ -10,12 +10,14 @@ import net.paoding.rose.web.annotation.rest.Get;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tbk.ymm.commons.consts.YmmConsts;
+import com.tbk.ymm.commons.dto.PageMeta;
 import com.tbk.ymm.commons.model.YmmNavigationCate;
 import com.tbk.ymm.commons.model.article.YmmArticle;
 import com.tbk.ymm.commons.model.article.YmmArticleCate;
 import com.tbk.ymm.service.YmmArticleCateService;
 import com.tbk.ymm.service.YmmArticleService;
 import com.tbk.ymm.service.YmmCateService;
+import com.tbk.ymm.utils.PageMetaUtil;
 import com.tbk.ymm.utils.cate.YmmCateUtil;
 
 @Path("/cate")
@@ -47,6 +49,10 @@ public class YmmArticleCateController {
 		List<YmmArticleCate> articleCateList = ymmArticleCateService.getArtileCateList(lv2CateId);
 		List<YmmArticle> articleList = ymmArticleService.getListByArticleCateId(lv2CateId);
 		//
+		YmmArticleCate curArticleCate = getCurArticleCate(lv2CateId, articleCateList);
+		PageMeta curMeta = PageMetaUtil.getCurMetaForArticleCatePage(curArticleCate);
+		//
+		inv.addModel("curMeta", curMeta);
 		inv.addModel("isHome", false);
 		inv.addModel("navigationList", navigationList);
 		inv.addModel("articleCateList", articleCateList);
@@ -56,5 +62,15 @@ public class YmmArticleCateController {
 		return "ymm_article_cate";
 	}
 
+	// -----------------------------------------------
+
+	private YmmArticleCate getCurArticleCate(int lv2CateId, List<YmmArticleCate> articleCateList) {
+		for (YmmArticleCate ymmArticleCate : articleCateList) {
+			if (lv2CateId == ymmArticleCate.getId()) {
+				return ymmArticleCate;
+			}
+		}
+		return null;
+	}
 
 }

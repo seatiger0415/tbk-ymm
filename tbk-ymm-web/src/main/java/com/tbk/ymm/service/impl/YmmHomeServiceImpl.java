@@ -15,12 +15,17 @@ import com.tbk.ymm.commons.dto.YmmItem;
 import com.tbk.ymm.commons.enums.CateRefType;
 import com.tbk.ymm.commons.model.YmmCateRef;
 import com.tbk.ymm.commons.model.YmmNavigationCate;
+import com.tbk.ymm.commons.model.YmmRecommendEachNavigation;
 import com.tbk.ymm.dao.YmmCateRefDAO;
+import com.tbk.ymm.dao.YmmRecommendEachNavigationDAO;
 import com.tbk.ymm.dao.article.YmmArticleCateDAO;
 import com.tbk.ymm.dao.article.YmmArticleDAO;
+import com.tbk.ymm.dao.cate.YmmItemCateDAO;
+import com.tbk.ymm.data.catcher.commons.model.YmmItemCate;
 import com.tbk.ymm.logic.YmmRecommendLogic;
 import com.tbk.ymm.service.YmmCateService;
 import com.tbk.ymm.service.YmmHomeService;
+import com.tbk.ymm.utils.collections.CollectionUtils;
 
 @Service
 public class YmmHomeServiceImpl implements YmmHomeService {
@@ -37,6 +42,10 @@ public class YmmHomeServiceImpl implements YmmHomeService {
 	private YmmArticleDAO ymmArticleDAO;
 	@Autowired
 	private YmmCateRefDAO ymmCateRefDAO;
+	@Autowired
+	private YmmRecommendEachNavigationDAO recommedByNavDAO;
+	@Autowired
+	private YmmItemCateDAO ymmItemCateDAO;
 
 	@Override
 	public List<YmmHomeDataOneCate> getHomeData(List<YmmNavigationCate> navigationList) {
@@ -95,14 +104,35 @@ public class YmmHomeServiceImpl implements YmmHomeService {
 			YmmCateBarDTO ymmCateBarDTO = ymmCateService.getCateBar(navigationCate.getId());
 			YmmHomeDataOneCate homeDataOneCate = new YmmHomeDataOneCate();
 			//
-			navigationCate.buildLv2CateList(ymmCateBarDTO.getLv2CateList());
+			// navigationCate.buildLv2CateList(ymmCateBarDTO.getLv2CateList());
 			//
 			homeDataOneCate.setNavigationCate(navigationCate);
-			homeDataOneCate.setItemCateList(ymmCateBarDTO.getLv2CateList());
+			homeDataOneCate.setItemCateList(getRecommendLv2CateListOfOneNavCate(ymmCateBarDTO));
 			//
 			homeDataList.add(homeDataOneCate);
 		}
 		return homeDataList;
 	}
 
+	/**
+	 * 一个导航类目下推荐的二级类目；首先从ymm_recommend_each_navigation表中取，没有的话，取默认前N名
+	 * 
+	 * @param ymmCateBarDTO
+	 * @return
+	 */
+	private List<YmmItemCate> getRecommendLv2CateListOfOneNavCate(YmmCateBarDTO ymmCateBarDTO) {
+		YmmNavigationCate navCate = ymmCateBarDTO.getCurNavCate();
+		if (null != navCate) {
+			List<YmmRecommendEachNavigation> recommendConfList = recommedByNavDAO.getByNavigationId(navCate.getId());
+			if (!CollectionUtils.isCollectionEmpty(recommendConfList)) {
+				for (YmmRecommendEachNavigation recommend : recommendConfList) {
+					List<Long> lv2CidList = recommend.getLv2CidList();
+					if (!lv2CidList.isEmpty()) {
+						return ymmItemCateDAO.getByCids(lv2CidList);
+					}
+				}
+			}
+		}
+		return ymmCateBarDTO.getLv2CateList();
+	}
 }

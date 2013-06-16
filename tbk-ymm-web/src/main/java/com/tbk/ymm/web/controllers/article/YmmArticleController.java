@@ -16,6 +16,7 @@ import com.tbk.ymm.commons.model.article.YmmArticleCate;
 import com.tbk.ymm.service.YmmArticleCateService;
 import com.tbk.ymm.service.YmmArticleService;
 import com.tbk.ymm.service.YmmCateService;
+import com.tbk.ymm.utils.PageMetaUtil;
 
 @Path("/")
 public class YmmArticleController {
@@ -34,6 +35,7 @@ public class YmmArticleController {
 		int cid = null == article ? YmmConsts.SHOPPING_CATE_ID : article.getArticleCateId();
 		List<YmmArticleCate> articleCateList = ymmArticleCateService.getArtileCateList(cid);
 		//
+		inv.addModel("curMeta", PageMetaUtil.getCurMetaForArticlePage(article));
 		inv.addModel("isHome", false);
 		inv.addModel("navigationList", navigationList);
 		inv.addModel("articleCateList", articleCateList);

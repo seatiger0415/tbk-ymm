@@ -37,5 +37,5 @@ public interface YmmCateService {
 	 * @return
 	 */
 	public List<YmmCateBarDTO> getAllCate(List<YmmNavigationCate> navCateList);
-
+	
 }

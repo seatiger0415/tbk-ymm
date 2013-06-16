@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: /admin/
-Sitemap: http://yunmama123.com/siteMap/
+Sitemap: http://yunmama123.com/sitemap.html

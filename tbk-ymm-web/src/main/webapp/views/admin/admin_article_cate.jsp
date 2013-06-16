@@ -30,9 +30,6 @@
 </head>
 
 <body>
-	<!-- 网站最上面的广告 -->
-	<%@ include file="/common/common_top_ad.jsp"%>
-	
 	<!-- begin wrapper 网站所有展示的内容 -->
 	<div id="wrapper">		
 		<!-- 网站的统一的头 -->

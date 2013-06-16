@@ -41,7 +41,8 @@ public class YmmDataConsts {
 			YUN_YINGYANG_YUEZI_CID, YUN_SUSHEN_CID, YUN_JIAJU_BURU_CID, YUN_CHANQIANHOU_CID);
 
 	public static final Set<Long> filterSet = Sets.newHashSet(50002664L/* 孕妇装-其他 */,
-			50023595L/* 孕妇装-影楼服装 */, 50023594L/* 孕妇装-棉衣羽绒服大衣 */, 50050346L/* 孕妇装-孕妇婚纱礼服 */
+			50023595L/* 孕妇装-影楼服装 */, 50023594L/* 孕妇装-棉衣羽绒服大衣 */, 
+			50050346L/* 孕妇装-孕妇婚纱礼服 */
 			);
 
 	// ----------------end 类目id------------------------------------------------------

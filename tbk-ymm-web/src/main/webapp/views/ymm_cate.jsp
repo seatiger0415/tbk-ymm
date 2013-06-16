@@ -26,7 +26,7 @@
 
 <body>
 	<!-- 网站最上面的广告 -->
-	<%@ include file="/common/common_top_ad.jsp"%>
+	<%-- <%@ include file="/common/common_top_ad.jsp"%>--%>
 	
 	<!-- begin wrapper 网站所有展示的内容 -->
 	<div id="wrapper">		
@@ -62,22 +62,12 @@
 				<div class="prlist">
 					<div class="prlist-inner">
 						<c:forEach var="item" items="${itemResultView.list}" varStatus="status">
-							<div class="item lproot">
+							<div class="item lproot" style="height:312px;">
 								<div>
-									<a data-type="0" data-itemid="${item.trackIid}" data-rd="1" data-style="2" data-tmpl="230x312" target="_blank"></a>
-								</div>
-								<!--  
-								<div class="photo">
-									<a href="${item.itemUrl}" target="_blank">
-										<img class="" src="${item.itemPicture}" alt="${item.itemName}">
+									<a data-type="0" data-itemid="${item.trackIid}" data-rd="1" data-style="2" data-tmpl="230x312" target="_blank">
+										${item.itemName}
 									</a>
 								</div>
-								<p class="txt">
-									<a href="${item.itemUrl}" target="_blank">${item.itemName}</a>
-								</p>
-								<div class="op" style="text-align: center;">
-									<a class="btn-like" href="#"><i></i><span><em>36</em></span></a>
-								</div>-->
 							</div>
 						</c:forEach>
 					</div>
@@ -93,12 +83,6 @@
 					<c:set var="extraParams" value="${extraParams}&bigPrice=${catePageParam.bigPrice}"/>
 				</c:if>
                 <%@ include file="/common/pager.jsp" %>
-                
-				<!--  延迟加载的功能
-				<div id="loading" class="loading loading-26" style="display: none;">
-					<i></i>加载中……
-				</div>
-				-->
 			</div>
 				
 			<!-- body最下面的轮播广告部分-->

@@ -20,7 +20,7 @@
 
 <body>
 	<!-- 网站最上面的广告 -->
-	<%@ include file="/common/common_top_ad.jsp"%>
+	<%-- <%@ include file="/common/common_top_ad.jsp"%>--%>
 	
 	<!-- begin wrapper 网站所有展示的内容 -->
 	<div id="wrapper">	
@@ -44,7 +44,7 @@
 							</div>
 							<div class="category-tag-wrap">
 								<c:forEach var="innerItem" items="${item.itemCateList}" varStatus="status">
-									<a href="${YMM_DOMAIN}/cate/${innerItem.cid}" target="_blank">${innerItem.name}</a>
+									<a href="${YMM_DOMAIN}/cate/${innerItem.cid}" target="_blank">${innerItem.simpleName()}</a>
 								</c:forEach>
 								<a href="${YMM_DOMAIN}/cate/${item.navigationCate.id}" target="_blank"><span class="category-tag-txt">更多</span><i class="ico-triangle"></i></a>
 							</div>
@@ -64,20 +64,11 @@
 						<ul class="category-list">
 							<c:forEach var="innerItem" items="${item.itemList}" varStatus="status">
 								<li style="height:312px;">
-									<!--  淘点金组件 -->
 									<div>
-										<a data-type="0" data-itemid="${innerItem.trackIid}" data-rd="1" data-style="2" data-tmpl="230x312" target="_blank"></a>
+										<a data-type="0" data-itemid="${innerItem.trackIid}" data-rd="1" data-style="2" data-tmpl="230x312" target="_blank">
+											${innerItem.itemName}
+										</a>
 									</div>
-									<!--  
-									<a data-itemid="${innerItem.trackIid}" target="_blank" href="${innerItem.itemUrl}" target="_blank">
-										<img class="lazy-load" src="/static/img/space.gif" data-src="${innerItem.itemPicture}">
-										<div class="category-list-desc-wrap"></div>
-										<dl class="category-list-desc">
-											<dt style="font-size: 12px">${innerItem.itemCate().name}</dt>
-											<dd>${innerItem.itemNameWithCut()}</dd>
-										</dl>
-									</a>
-									-->
 								</li>
 							</c:forEach>
 						</ul>

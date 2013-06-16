@@ -71,6 +71,27 @@ public class YmmItemCate {
 		return ymmItemCate;
 	}
 
+	/**
+	 * 如果名字太长，先截断'/'分隔的，然后取可以允许的长度
+	 * 
+	 * @return
+	 */
+	public String simpleName() {
+		if (null == name) {
+			return "";
+		}
+		if (name.length() >= 8) {
+			int index = name.indexOf('/');
+			if (index > 0) {
+				return name.substring(0, index);
+			}
+		}
+		if (name.length() > 10) {
+			return name.substring(0, 10);
+		}
+		return name;
+	}
+
 	// -------------------------------------
 
 	public boolean selected() {

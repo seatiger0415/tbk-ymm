@@ -1,4 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%-- <%@ page isELIgnored="false" %> 在web.xml中的web-app版本设置不是2.4的情况下，默认不能使用EL表达式，需要这一句设置一下--%>
@@ -6,9 +5,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">	
-	<meta name="keywords" content="${curMeta.keywords}">
-	<meta name="description" content="${curMeta.description}">
-	<title>${curMeta.title}</title>
+	<meta name="keywords" content="怀孕,防辐射服,孕妇,孕妇装,孕妇服装,孕妇内衣,导购">
+	<meta name="description" content="孕妈妈良品导购,有品质又实用的孕妈妈导购网站,为孕妈妈们提供靠谱和精致的物品推荐。">
+	<title>孕妈妈  最实用的孕妈妈导购网站</title>
 	<!--  <link rel="shortcut icon" href="http://www.leho.com/favicon.ico" type="image/x-icon"> -->
 
 	<link rel="stylesheet" type="text/css" href="/static/css/goods_bc.css">
@@ -26,7 +25,7 @@
 
 <body>
 	<!-- 网站最上面的广告 -->
-	<%-- <%@ include file="/common/common_top_ad.jsp"%>--%>
+	<%@ include file="/common/common_top_ad.jsp"%>
 	
 	<!-- begin wrapper 网站所有展示的内容 -->
 	<div id="wrapper">		
@@ -38,67 +37,106 @@
 				<div class="list-filter-category" id="tagTool">
 					<div class="list-filter-inner">
 						<c:forEach var="item" items="${subCateList}">
-							<a class="tag<c:if test='${item.selected()}'> curr</c:if>" 
+							<a class="tag<c:if test='${item.isSelected()}'> curr</c:if>" 
 								href="${YMM_DOMAIN}/cate/${item.cid}">${item.name}</a>
 						</c:forEach>
+						<!--  
+						<a class="tag" href="#">客厅</a>
+						<a class="tag" href="#">家饰</a>
+						<a class="tag" href="#">卧室</a>
+						<a class="tag" href="#">卫浴</a>
+						<a class="tag" href="#">厨房</a>
+						<a class="tag" href="#">小家电</a>
+						<a class="tag" href="#">灯具</a>
+						<a class="tag" href="#">花园</a>
+						<a class="tag" href="#">创意设计</a>
+						<a class="tag" href="#">杂货</a>
+						<a class="tag" href="#">收纳</a>
+						<a class="tag" href="#">清凉一夏</a>
+						-->
 					</div>
 				</div>
 				<div class="list-filter-category list-filter-category-fixed cls" id="tagToolFixed" style="display:none;">
 					<div class="list-filter-inner">
 						<div class="category-wrapper cls">
 							<c:forEach var="item" items="${subCateList}">
-							<a class="tag<c:if test='${item.selected()}'> curr</c:if>" 
+							<a class="tag<c:if test='${item.isSelected()}'> curr</c:if>" 
 								href="${YMM_DOMAIN}/cate/${item.cid}">${item.name}</a>
 						</c:forEach>
 						</div>
 						<div class="header-module-user-wrap">
-							<p>回到首页</p>						
+							<p>回到首页</p>
+							<p>xxx知识</p>						
 						</div>
 					</div>
-				</div> 
-				<%@ include file="/views/inc/cate_filter_bar.inc"%>
+				</div>
+				<div class="list-filter-inner">
+					<ul class="list-filter-status">
+						<li class="curr"><a href="#" target="_self">小编精选</a></li>
+						<li class="middle"><a href="#" target="_self">7天最热</a></li>
+						<li class=""><a href="#" target="_self">最新推荐</a></li>
+					</ul>
+					<div class="list-filter-price">
+						<span class="tt">价格：</span>
+						<ul>
+							<li class="curr">
+								<a href="#" target="_self">全部</a>
+							</li>
+							<li class="">
+								<a href="#" target="_self">0-50</a>
+							</li>
+							<li class="">
+								<a href="#" target="_self">51-200</a>
+							</li>
+							<li class="">
+								<a href="#" target="_self">201-500</a>
+							</li>
+							<li class="">
+								<a href="#" target="_self">500以上</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 			<div>
 				<div class="prlist">
 					<div class="prlist-inner">
-						<c:forEach var="item" items="${itemResultView.list}" varStatus="status">
-							<div class="item lproot">
-								<div>
-									<a data-type="0" data-itemid="${item.trackIid}" data-rd="1" data-style="2" data-tmpl="230x312" target="_blank"></a>
-								</div>
-								<!--  
+						<c:forEach begin="0" end="11" varStatus="status">
+							<div class="item lproot" data-lpid="53679">
 								<div class="photo">
-									<a href="${item.itemUrl}" target="_blank">
-										<img class="" src="${item.itemPicture}" alt="${item.itemName}">
+									<a href="#" target="_blank">
+										<img class="" src="/static/img/230_230.jpg" alt="这是一个商品">
 									</a>
 								</div>
 								<p class="txt">
-									<a href="${item.itemUrl}" target="_blank">${item.itemName}</a>
+									<a href="#" target="_blank">这里是商品说明</a>
 								</p>
 								<div class="op" style="text-align: center;">
 									<a class="btn-like" href="#"><i></i><span><em>36</em></span></a>
-								</div>-->
+								</div>
 							</div>
 						</c:forEach>
 					</div>
 				</div>
-				<!-- pager -->
-				<c:set var="resultView" value="${itemResultView}"/>
-				<c:set var="url" value="${YMM_DOMAIN}/cate/${catePageParam.cateId}"/>
-				<c:set var="extraParams" value=""/>
-				<c:if test="${catePageParam.smallPrice > 0}">
-					<c:set var="extraParams" value="${extraParams}&smallPrice=${catePageParam.smallPrice}"/>
-				</c:if>
-				<c:if test="${catePageParam.bigPrice > 0}">
-					<c:set var="extraParams" value="${extraParams}&bigPrice=${catePageParam.bigPrice}"/>
-				</c:if>
-                <%@ include file="/common/pager.jsp" %>
-                
-				<!--  延迟加载的功能
+				<div id="pager" style="display: none;">
+					<div class="global-page-module global-page-big">
+						<span class="select">1</span>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">4</a>
+						<a href="#">5</a>
+						<a href="#">6</a>
+						<a href="#">7</a>
+						<a href="#">8</a>
+						<a href="#">9</a>
+						<span class="global-page-break">...</span>
+						<a href="#">62</a>
+						<a class="global-page-next" href="#"><em>下一页</em><i class="ico-global-page"></i></a>
+					</div>
+				</div>
 				<div id="loading" class="loading loading-26" style="display: none;">
 					<i></i>加载中……
 				</div>
-				-->
 			</div>
 				
 			<!-- body最下面的轮播广告部分-->
@@ -125,6 +163,6 @@
 	<!-- end wrapper 网站所有展示的内容 -->	
 	
 	<script src="/static/js/common.js"></script>
-	<%@ include file="/common/tao_dian_jin.jsp" %>	
+		
 </body>
 </html>

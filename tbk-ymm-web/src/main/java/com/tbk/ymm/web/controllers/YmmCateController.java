@@ -8,27 +8,27 @@ import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
 
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.common.collect.Lists;
-import com.tbk.ymm.commons.consts.YmmConsts;
 import com.tbk.ymm.commons.dto.PageMeta;
 import com.tbk.ymm.commons.dto.ResultView;
 import com.tbk.ymm.commons.dto.YmmCateBarDTO;
 import com.tbk.ymm.commons.dto.YmmItem;
 import com.tbk.ymm.commons.dto.params.CatePageParam;
 import com.tbk.ymm.commons.dto.params.YmmItemQueryParam;
-import com.tbk.ymm.commons.enums.PageMetaSetter;
 import com.tbk.ymm.commons.model.YmmNavigationCate;
 import com.tbk.ymm.commons.model.article.YmmArticle;
+import com.tbk.ymm.commons.model.article.YmmArticleCate;
 import com.tbk.ymm.data.catcher.commons.model.YmmItemCate;
+import com.tbk.ymm.service.YmmArticleCateService;
 import com.tbk.ymm.service.YmmArticleService;
 import com.tbk.ymm.service.YmmCateRefService;
 import com.tbk.ymm.service.YmmCateService;
 import com.tbk.ymm.service.YmmItemsService;
+import com.tbk.ymm.utils.PageMetaUtil;
 
 /**
  * 某个具体的分类页面
@@ -50,6 +50,8 @@ public class YmmCateController {
 	private YmmArticleService ymmArticleService;
 	@Autowired
 	private YmmCateRefService ymmCateRefService;
+	@Autowired
+	private YmmArticleCateService ymmArticleCateService;
 
 	/**
 	 * 各个分类的页面
@@ -63,8 +65,8 @@ public class YmmCateController {
 		//
 		CatePageParam catePageParam = buildCatePageParam(cateId, curPage, smallPrice, bigPrice);
 		ResultView<YmmItem> itemResultView = getItemsResultView(ymmCateBarDTO, catePageParam);
-		// 网站的title
-		inv.addModel("curMeta", getCurMeta(ymmCateBarDTO));
+		// 网站的title, keywords, description
+		inv.addModel("curMeta", PageMetaUtil.getCurMetaForCatePage(ymmCateBarDTO));
 		// 一级导航
 		inv.addModel("navigationList", ymmCateBarDTO.getNavigationList());
 		// 二级导航
@@ -86,11 +88,17 @@ public class YmmCateController {
 	public String articleOfCatePage(Invocation inv, @Param("cateId") final int cateId,
 			@Param("article") @DefValue("") final String article) {
 		YmmCateBarDTO ymmCateBarDTO = ymmCateService.getCateBar(cateId);
+		//
+		// TODO 目前购物攻略只关联到了导航级别的类目，将来可能需要关联到各个子类目
 		long navCateId = getNavCateId(ymmCateBarDTO);
 		int articleCateId = ymmCateRefService.getArticleCateIdByCateId(navCateId);
 		//
 		List<YmmArticle> articleList = ymmArticleService.getListByArticleCateId(articleCateId);
 		//
+		YmmArticleCate curArticleCate = ymmArticleCateService.getById(articleCateId);
+		PageMeta curMeta = PageMetaUtil.getCurMetaForArticleCatePage(curArticleCate);
+		//
+		inv.addModel("curMeta", curMeta);
 		// 一级导航
 		inv.addModel("navigationList", ymmCateBarDTO.getNavigationList());
 		// 二级导航
@@ -105,88 +113,6 @@ public class YmmCateController {
 	}
 
 	// ----------------------------------------------------------------------
-
-	/**
-	 * 分类页面的meta和title
-	 * 
-	 * @param ymmCateBarDTO
-	 * @return
-	 */
-	private PageMeta getCurMeta(YmmCateBarDTO ymmCateBarDTO) {
-		PageMeta pageMeta = new PageMeta();
-		StringBuilder sbTitle = new StringBuilder();
-		StringBuilder sbKeywords = new StringBuilder();
-		StringBuilder sbDescrption = new StringBuilder();
-		//
-		//
-		YmmNavigationCate curNavCate = ymmCateBarDTO.getCurNavCate();
-		if (null != curNavCate && !StringUtils.isEmpty(curNavCate.getName())) {
-			sbTitle.append(curNavCate.getName()).append(YmmConsts.TITLE_DELIMETER);
-			//
-			PageMetaSetter pageMetaSetter = PageMetaSetter.getEnumByCateId(curNavCate.getId());
-			if (null != pageMetaSetter) {
-				sbKeywords.append(pageMetaSetter.getKeywords()).append(YmmConsts.KEYWORDS_DELIMETER);
-				sbDescrption.append(pageMetaSetter.getDescrption());
-			}
-			sbKeywords.append(curNavCate.getName()).append(YmmConsts.KEYWORDS_DELIMETER)
-					.append(curNavCate.getName()).append("价格").append(YmmConsts.KEYWORDS_DELIMETER);
-		}
-		//
-		YmmItemCate curLv1Cate = ymmCateBarDTO.getCurLv1Cate();
-		if (null != curLv1Cate && !StringUtils.isEmpty(curLv1Cate.getName())) {
-			// 以导航为准，如果当前一级类目和导航类目不是一对一，则有机会显示出一级类目
-			if (null == curNavCate || !curLv1Cate.getName().equals(curNavCate.getName())) {
-				String cateNameForTitle = replaceName(curLv1Cate.getName(), YmmConsts.TITLE_DELIMETER);
-				String cateNameForKeywords = replaceName(curLv1Cate.getName(), YmmConsts.KEYWORDS_DELIMETER);
-				//
-				sbTitle.append(cateNameForTitle).append(YmmConsts.TITLE_DELIMETER);
-				//
-				sbKeywords.append(cateNameForKeywords).append(YmmConsts.KEYWORDS_DELIMETER);
-				sbKeywords.append(cateNameForKeywords).append(YmmConsts.KEYWORDS_DELIMETER)
-						.append(cateNameForKeywords).append("价格").append(YmmConsts.KEYWORDS_DELIMETER);
-			}
-		}
-		//
-		YmmItemCate curLv2Cate = ymmCateBarDTO.getCurLv2Cate();
-		if (null != curLv2Cate && !StringUtils.isEmpty(curLv2Cate.getName())) {
-			String cateNameForTitle = replaceName(curLv2Cate.getName(), YmmConsts.TITLE_DELIMETER);
-			String cateNameForKeywords = replaceName(curLv2Cate.getName(), YmmConsts.KEYWORDS_DELIMETER);
-			//
-			sbTitle.append(cateNameForTitle).append(YmmConsts.TITLE_DELIMETER);
-			//
-			sbKeywords.append(cateNameForKeywords).append(YmmConsts.KEYWORDS_DELIMETER);
-			sbKeywords.append(cateNameForKeywords).append(YmmConsts.KEYWORDS_DELIMETER)
-					.append(cateNameForKeywords).append("价格").append(YmmConsts.KEYWORDS_DELIMETER);
-		}
-		//
-		if (null != curNavCate) {
-			PageMetaSetter pageMetaSetter = PageMetaSetter.getEnumByCateId(curNavCate.getId());
-			if (null != pageMetaSetter) {
-				sbTitle.append(pageMetaSetter.getTitle()).append(YmmConsts.TITLE_DELIMETER);
-			}
-		}
-		sbTitle.append(YmmConsts.SITE_NAME);
-		//
-		pageMeta.setTitle(sbTitle.toString());
-		pageMeta.setKeywords(sbKeywords.toString());
-		pageMeta.setDescription(sbDescrption.toString());
-		//
-		return pageMeta;
-	}
-
-	/**
-	 * 替换掉一个特殊字符
-	 * 
-	 * @param name
-	 * @param delimeter
-	 * @return
-	 */
-	private String replaceName(String name, String delimeter) {
-		if (StringUtils.isEmpty(name)) {
-			return "";
-		}
-		return name.replaceAll("/", delimeter).replaceAll("，", delimeter).replaceAll(" ", delimeter);
-	}
 
 	/**
 	 * 

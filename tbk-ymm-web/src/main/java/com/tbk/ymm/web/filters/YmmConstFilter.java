@@ -20,7 +20,7 @@ public class YmmConstFilter implements Filter {
 	@Override
 	public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
 		request.setAttribute("STATIC_ROOT", "/static");
-		request.setAttribute("YMM_DOMAIN", "http://yunmama123.com");
+		request.setAttribute("YMM_DOMAIN", "http://www.yunmama123.com");
 		request.setAttribute("APP_KEY", YmmDataConsts.YMM_APP_KEY);
 		//
 		chain.doFilter(request, response);

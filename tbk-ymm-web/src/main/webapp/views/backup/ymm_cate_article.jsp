@@ -6,9 +6,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">	
-	<meta name="keywords" content="${curMeta.keywords}">
-	<meta name="description" content="${curMeta.description}">
-	<title>${curMeta.title}</title>
+	<meta name="keywords" content="婧麒防辐射服,孕妇防辐射服,孕妇装,十月妈咪,添香,防辐射服哪个牌子好,孕妇内衣">
+	<meta name="description" content="精选孕妈妈购物攻略,为您解决买东西发愁的烦恼">
+	<title>孕妈妈  最实用的孕妈妈导购网站</title>
 	<!--  <link rel="shortcut icon" href="http://www.leho.com/favicon.ico" type="image/x-icon"> -->
 
 	<link rel="stylesheet" type="text/css" href="/static/css/goods_bc.css">
@@ -22,11 +22,12 @@
 	</script>
 	<script src="/static/js/logger.js"></script>
 	<link href="/static/css/bdsstyle.css" rel="stylesheet" type="text/css">
+	<link href="/static/css/article_cate.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 	<!-- 网站最上面的广告 -->
-	<%-- <%@ include file="/common/common_top_ad.jsp"%>--%>
+	<%@ include file="/common/common_top_ad.jsp"%>
 	
 	<!-- begin wrapper 网站所有展示的内容 -->
 	<div id="wrapper">		
@@ -58,40 +59,32 @@
 				</div> 
 				<%@ include file="/views/inc/cate_filter_bar.inc"%>
 			</div>
-			<div>
+			<div class="body-body">
 				<div class="prlist">
-					<div class="prlist-inner">
-						<c:forEach var="item" items="${itemResultView.list}" varStatus="status">
-							<div class="item lproot">
-								<div>
-									<a data-type="0" data-itemid="${item.trackIid}" data-rd="1" data-style="2" data-tmpl="230x312" target="_blank"></a>
-								</div>
-								<!--  
-								<div class="photo">
-									<a href="${item.itemUrl}" target="_blank">
-										<img class="" src="${item.itemPicture}" alt="${item.itemName}">
-									</a>
-								</div>
-								<p class="txt">
-									<a href="${item.itemUrl}" target="_blank">${item.itemName}</a>
-								</p>
-								<div class="op" style="text-align: center;">
-									<a class="btn-like" href="#"><i></i><span><em>36</em></span></a>
-								</div>-->
+					<div class="prlist-inner">						
+						<div class="article-body">
+							<div class="article-list">
+								<c:forEach var="item" items="${articleList}">
+									<table cellpadding="0" cellspacing="0" class="article-tilte-outline">
+										<tbody>
+											<tr>
+												<td class="f">
+													<h3 class="t">
+														<a href="${YMM_DOMAIN}/article/${item.id}" target="_blank">
+															<em class="article-title">${item.title}</em>
+														</a>
+													</h3>     
+													<div class="c-abstract">${item.brief}</div>
+											    </td>
+											</tr>
+										</tbody>
+									</table>
+								</c:forEach>
 							</div>
-						</c:forEach>
+						</div>
 					</div>
 				</div>
-				<!-- pager -->
 				<c:set var="resultView" value="${itemResultView}"/>
-				<c:set var="url" value="${YMM_DOMAIN}/cate/${catePageParam.cateId}"/>
-				<c:set var="extraParams" value=""/>
-				<c:if test="${catePageParam.smallPrice > 0}">
-					<c:set var="extraParams" value="${extraParams}&smallPrice=${catePageParam.smallPrice}"/>
-				</c:if>
-				<c:if test="${catePageParam.bigPrice > 0}">
-					<c:set var="extraParams" value="${extraParams}&bigPrice=${catePageParam.bigPrice}"/>
-				</c:if>
                 <%@ include file="/common/pager.jsp" %>
                 
 				<!--  延迟加载的功能

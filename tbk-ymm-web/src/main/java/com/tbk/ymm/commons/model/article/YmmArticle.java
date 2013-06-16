@@ -1,8 +1,12 @@
 package com.tbk.ymm.commons.model.article;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+
+import com.google.common.collect.Lists;
 
 /**
  * 文章模型
@@ -22,6 +26,7 @@ public class YmmArticle {
 	private String title;
 	private String content;
 	private String brief;
+	private String keywords; // 关键字列表，用半角逗号分隔
 	private int status = STATUS_NORMAL;
 	private int rank = 0;
 
@@ -41,6 +46,24 @@ public class YmmArticle {
 			return title;
 		}
 		return title.substring(0, SIMPLE_TITLE_LEN);
+	}
+
+	public List<String> keywordsList() {
+		if (StringUtils.isEmpty(keywords)) {
+			return Collections.emptyList();
+		}
+		String[] keywordArr = keywords.split(",");
+		List<String> kList = Lists.newArrayList();
+		for (String keyword : keywordArr) {
+			if (null == keyword) {
+				continue;
+			}
+			String k = keyword.trim();
+			if (!StringUtils.isEmpty(k)) {
+				kList.add(k);
+			}
+		}
+		return kList;
 	}
 
 	// --------------------------------
@@ -123,6 +146,14 @@ public class YmmArticle {
 
 	public void setRank(int rank) {
 		this.rank = rank;
+	}
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
 	}
 
 }

@@ -29,5 +29,11 @@ public interface YmmArticleCateService {
 	 * @return
 	 */
 	public List<YmmArticleCate> getAllExperienceArticleCateList();
+	
+	/**
+	 * @param articleCateId
+	 * @return
+	 */
+	public YmmArticleCate getById(int articleCateId);
 
 }

@@ -26,7 +26,7 @@
 					<a href="${YMM_DOMAIN}/article/cate/experience" class="life-service-nav" rel="nofollow" >孕妈妈经验谈</a>
 					-->  
 					<i class="login-txt-vertical"></i>
-					<a class="header-module-favorite" href="${YMM_DOMAIN}/siteMap" target="_blank">网站地图</a>
+					<a class="header-module-favorite" href="${YMM_DOMAIN}/sitemap.html" target="_blank">网站地图</a>
 					<a class="header-module-favorite" href="javascript:;" onclick="goods.utils.addFavorite(&#39;http://www.yunmama123.com&#39;,&#39;收藏孕妈妈，随时发现精彩分享&#39;);">收藏孕妈妈</a>
 					<!--  
 					<div class="header-module-follow">
@@ -63,18 +63,11 @@
 								</c:if>
 							</a>
 						</li>
-						<!--  
-						<li class="tag" data-cid="509"><i class="ico-head ico-vertical"></i><a href="#">孕妇装</a></li>
-						<li class="tag" data-cid="509"><i class="ico-head ico-vertical"></i><a href="#">孕妇内衣</a></li>
-						<li class="tag" data-cid="510"><i class="ico-head ico-vertical"></i><a href="#">孕妇洗护</a></li>
-						<li class="tag" data-cid="510"><i class="ico-head ico-vertical"></i><a href="#">孕营养品</a></li>
-						<li class="tag" data-cid="510"><i class="ico-head ico-vertical"></i><a href="#">其他</a></li>
-						-->
 					</c:forEach>
 				</ul> 
 			</div>
 			<div class="header-module-user-wrap">
-				<!-- begin 淘宝登陆组件 -->
+				<!-- begin 登陆组件 -->
 				<div id="taobao-login"></div>
                 <script>
                   TOP.ui("login-btn", {
@@ -86,7 +79,7 @@
                     }
                   });
                 </script>
-                <!-- end 淘宝登陆组件 -->
+                <!-- end 登陆组件 -->
                 <!--
 				<a href="#" data-type="third" class="third-login gm-login-sina ico-login ico-login-weibo" rel="nofollow">微博登录</a>
 				<a href="#" data-type="third" class="third-login gm-login-qq ico-login ico-login-qq" rel="nofollow">QQ登录</a>

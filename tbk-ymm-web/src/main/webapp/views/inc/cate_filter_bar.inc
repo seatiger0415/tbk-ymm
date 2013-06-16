@@ -4,7 +4,7 @@
 			<a href="${YMM_DOMAIN}/cate/${curCid}" target="_self">商品精选</a>
 		</li>
 		<li <c:if test="${!isItemPage}">class="curr"</c:if>>
-			<a href="${YMM_DOMAIN}/cate/${curCid}/article" target="_self">购物攻略</a>
+			<a href="${YMM_DOMAIN}/cate/${curCid}/article" target="_self">精品攻略</a>
 		</li>
 	</ul>
 	<div class="list-filter-price">
