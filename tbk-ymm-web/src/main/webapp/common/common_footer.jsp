@@ -83,3 +83,9 @@
 	
 </div>
 <!-- end 页脚部分 -->
+<!-- begin 百度统计代码 -->
+<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2afe211f53c18ed7a82673b4d99f581c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!-- end 百度统计代码 -->

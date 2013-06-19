@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /admin/
+Disallow: /static/
 Sitemap: http://yunmama123.com/sitemap.html
