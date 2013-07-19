@@ -20,10 +20,10 @@ public interface YmmArticleService {
 	 * @param articleCateId
 	 * @return
 	 */
-	public List<YmmArticle> getListByArticleCateId(int articleCateId);
+	public List<YmmArticle> getListByArticleCateId(int articleCateId, int limit);
 
 	/**
-	 * 把一个类目下的所有文章的标题和id信息放到文章类目模型中
+	 * 把一个类目下的所有文章的标题和id信息放到文章类目模型中；网站地图用，文章不排序
 	 * 
 	 * @param @param articleCateList
 	 * @return

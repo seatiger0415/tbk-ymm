@@ -27,6 +27,6 @@ public class YmmConsts {
 	public static final String DESCRPTION_DELIMETER = ",";
 
 	//
-	public static final String SITE_NAME = "孕妈妈";
+	public static final String SITE_NAME = "【孕妈妈】";
 
 }

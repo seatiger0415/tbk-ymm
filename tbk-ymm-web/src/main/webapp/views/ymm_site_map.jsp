@@ -85,7 +85,7 @@
 								    </td>
 								    <td>
 								    	<c:forEach var="innerItem" items="${item.articleList()}">
-											<a href="${YMM_DOMAIN}/article/${innerItem.id}" target="_blank">${innerItem.simpleTitle}</a>
+											<a href="${YMM_DOMAIN}/article/${innerItem.id}" target="_blank">${innerItem.title}</a>
 											&nbsp;&nbsp;&nbsp;&nbsp;
 										</c:forEach>
 								    </td>

@@ -23,6 +23,7 @@ import com.tbk.ymm.utils.cate.YmmCateUtil;
 @Path("/cate")
 public class YmmArticleCateController {
 
+	private static final int ARTICLE_PAGE_SIZE = 40;
 	@Autowired
 	private YmmCateService ymmCateService;
 	@Autowired
@@ -47,7 +48,7 @@ public class YmmArticleCateController {
 		List<YmmNavigationCate> navigationList = ymmCateService.getNavigationCateList();
 		//
 		List<YmmArticleCate> articleCateList = ymmArticleCateService.getArtileCateList(lv2CateId);
-		List<YmmArticle> articleList = ymmArticleService.getListByArticleCateId(lv2CateId);
+		List<YmmArticle> articleList = ymmArticleService.getListByArticleCateId(lv2CateId, ARTICLE_PAGE_SIZE);
 		//
 		YmmArticleCate curArticleCate = getCurArticleCate(lv2CateId, articleCateList);
 		PageMeta curMeta = PageMetaUtil.getCurMetaForArticleCatePage(curArticleCate);

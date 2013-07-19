@@ -31,17 +31,10 @@
 					<ul class="friend-links-item">
 						<li class="">
 							<a href="http://www.meilishuo.com/" target="_blank">美丽说</a>
-							<a href="http://www.mogujie.com/" target="_blank">蘑菇街</a>		
-							<a href="http://hotel.qunar.com/" target="_blank">去哪儿酒店</a>
-							<a href="http://www.kuxun.cn/" target="_blank">酷讯旅游网</a>
-							<a href="http://life.self.com.cn/" target="_blank">悦己乐活</a>
-							<a href="http://www.wed114.cn/" target="_blank">中国婚纱摄影网</a>
-							<a href="http://www.zhiwo.com/gindex.html" target="_blank">知我药妆</a>
-							<a href="http://www.leho.com/sale" target="_blank">什么值得买</a>
-							<a href="http://life.caijing.com.cn/index.html" target="_blank">财经网生活</a>
-							<a href="http://www.eastlady.cn/" target="_blank">东方女性网</a>
-							<a href="http://www.ijie.com/" target="_blank">爱结网</a>
-							<a href="http://www.leho.com/links" target="_blank">更多&gt;&gt;</a>
+							<a href="http://www.mogujie.com/" target="_blank">蘑菇街</a>	
+							<a href="http://www.babytree.com/" target="_blank" title="宝宝树 - 怀孕 育儿 大型育儿网站社区">宝宝树</a>
+							<a href="http://bbs.ci123.com/" target="_blank" title="育儿论坛 - 育儿网">育儿网</a>	
+							<a href="http://www.ttuu.com/" target="_blank" title="推优网-免费收录各类优秀网站的中文网站目录">推优网</a>
 						</li>						
 					</ul>				
 					<!-- 这个应该是轮播时用的。。具体什么作用呢? 

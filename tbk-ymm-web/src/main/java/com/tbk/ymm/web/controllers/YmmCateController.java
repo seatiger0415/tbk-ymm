@@ -38,6 +38,7 @@ import com.tbk.ymm.utils.PageMetaUtil;
 @Path("/cate")
 public class YmmCateController {
 
+	private static final int BEST_NUM = 20; // 一个类目下精品攻略的数量
 	private static final int PAGE_SIZE = 40;
 
 	private static final Logger logger = LoggerFactory.getLogger(YmmCateController.class);
@@ -93,7 +94,7 @@ public class YmmCateController {
 		long navCateId = getNavCateId(ymmCateBarDTO);
 		int articleCateId = ymmCateRefService.getArticleCateIdByCateId(navCateId);
 		//
-		List<YmmArticle> articleList = ymmArticleService.getListByArticleCateId(articleCateId);
+		List<YmmArticle> articleList = ymmArticleService.getListByArticleCateId(articleCateId, BEST_NUM);
 		//
 		YmmArticleCate curArticleCate = ymmArticleCateService.getById(articleCateId);
 		PageMeta curMeta = PageMetaUtil.getCurMetaForArticleCatePage(curArticleCate);

@@ -16,13 +16,14 @@ import com.tbk.ymm.commons.enums.CateRefType;
 import com.tbk.ymm.commons.model.YmmCateRef;
 import com.tbk.ymm.commons.model.YmmNavigationCate;
 import com.tbk.ymm.commons.model.YmmRecommendEachNavigation;
+import com.tbk.ymm.commons.model.article.YmmArticle;
 import com.tbk.ymm.dao.YmmCateRefDAO;
 import com.tbk.ymm.dao.YmmRecommendEachNavigationDAO;
 import com.tbk.ymm.dao.article.YmmArticleCateDAO;
-import com.tbk.ymm.dao.article.YmmArticleDAO;
 import com.tbk.ymm.dao.cate.YmmItemCateDAO;
 import com.tbk.ymm.data.catcher.commons.model.YmmItemCate;
 import com.tbk.ymm.logic.YmmRecommendLogic;
+import com.tbk.ymm.service.YmmArticleService;
 import com.tbk.ymm.service.YmmCateService;
 import com.tbk.ymm.service.YmmHomeService;
 import com.tbk.ymm.utils.collections.CollectionUtils;
@@ -39,7 +40,7 @@ public class YmmHomeServiceImpl implements YmmHomeService {
 	@Autowired
 	private YmmArticleCateDAO ymmArticleCateDAO;
 	@Autowired
-	private YmmArticleDAO ymmArticleDAO;
+	private YmmArticleService ymmArticleService;
 	@Autowired
 	private YmmCateRefDAO ymmCateRefDAO;
 	@Autowired
@@ -88,7 +89,8 @@ public class YmmHomeServiceImpl implements YmmHomeService {
 			int articleCateId = ymmCateRef.getArticleCateId();
 			//
 			ymmHomeDataOneCate.setArticleCateId(articleCateId);
-			ymmHomeDataOneCate.setArticleList(ymmArticleDAO.getListByCid(articleCateId, 5));
+			List<YmmArticle> articleList = ymmArticleService.getListByArticleCateId(articleCateId, 5);
+			ymmHomeDataOneCate.setArticleList(articleList);
 		}
 	}
 

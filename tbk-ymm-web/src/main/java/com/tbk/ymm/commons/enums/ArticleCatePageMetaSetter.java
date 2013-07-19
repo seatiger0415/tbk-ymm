@@ -17,7 +17,7 @@ import com.google.common.collect.Maps;
  */
 public enum ArticleCatePageMetaSetter {
 
-	Common(0, null, "孕妈妈_最实用的孕妈妈导购网站_最精美的孕妇购物攻略",
+	Common(0, null, "最实用的孕妈妈导购网站_最精美的孕妇购物攻略",
 			"防辐射服价格,孕妇装价格,十月妈咪怎么样,孕妇装夏装,防辐射服哪个牌子好,孕妇内衣",
 			"孕妈妈良品导购,有品质又实用的孕妈妈导购网站,为孕妈妈们提供靠谱和精致的物品推荐。"), //
 	FangFuShe(3, Common, "防辐射服哪个牌子好_防辐射孕妇装_防辐射衣服",

@@ -32,10 +32,12 @@ public class PageMetaUtil {
 		StringBuilder sbKeywords = new StringBuilder();
 		StringBuilder sbDescrption = new StringBuilder();
 		//
+		sbTitle.append(YmmConsts.SITE_NAME);
+		//
 		// 1. 导航
 		YmmNavigationCate curNavCate = ymmCateBarDTO.getCurNavCate();
 		if (null != curNavCate && !StringUtils.isEmpty(curNavCate.getName())) {
-			sbTitle.append(curNavCate.getName()).append(YmmConsts.TITLE_DELIMETER);
+			sbTitle.append(curNavCate.getName());
 			//
 			CatePageMetaSetter pageMetaSetter = CatePageMetaSetter.getEnumByCateId(curNavCate.getId());
 			if (null != pageMetaSetter) {
@@ -53,7 +55,7 @@ public class PageMetaUtil {
 				String cateNameForTitle = replaceName(curLv1Cate.getName(), YmmConsts.TITLE_DELIMETER);
 				String cateNameForKeywords = replaceName(curLv1Cate.getName(), YmmConsts.KEYWORDS_DELIMETER);
 				//
-				sbTitle.append(cateNameForTitle).append(YmmConsts.TITLE_DELIMETER);
+				sbTitle.append(YmmConsts.TITLE_DELIMETER).append(cateNameForTitle);
 				//
 				sbKeywords.append(cateNameForKeywords).append(YmmConsts.KEYWORDS_DELIMETER)
 						.append(cateNameForKeywords).append("价格").append(YmmConsts.KEYWORDS_DELIMETER);
@@ -65,7 +67,7 @@ public class PageMetaUtil {
 			String cateNameForTitle = replaceName(curLv2Cate.getName(), YmmConsts.TITLE_DELIMETER);
 			String cateNameForKeywords = replaceName(curLv2Cate.getName(), YmmConsts.KEYWORDS_DELIMETER);
 			//
-			sbTitle.append(cateNameForTitle).append(YmmConsts.TITLE_DELIMETER);
+			sbTitle.append(YmmConsts.TITLE_DELIMETER).append(cateNameForTitle);
 			//
 			sbKeywords.append(cateNameForKeywords).append(YmmConsts.KEYWORDS_DELIMETER)
 					.append(cateNameForKeywords).append("价格");
@@ -74,10 +76,9 @@ public class PageMetaUtil {
 		if (null != curNavCate) {
 			CatePageMetaSetter pageMetaSetter = CatePageMetaSetter.getEnumByCateId(curNavCate.getId());
 			if (null != pageMetaSetter) {
-				sbTitle.append(pageMetaSetter.getTitle()).append(YmmConsts.TITLE_DELIMETER);
+				sbTitle.append(YmmConsts.TITLE_DELIMETER).append(pageMetaSetter.getTitle());
 			}
 		}
-		sbTitle.append(YmmConsts.SITE_NAME);
 		//
 		pageMeta.setTitle(sbTitle.toString());
 		pageMeta.setKeywords(sbKeywords.toString());
@@ -98,9 +99,11 @@ public class PageMetaUtil {
 		StringBuilder sbTitle = new StringBuilder();
 		StringBuilder sbKeywords = new StringBuilder();
 		StringBuilder sbDescrption = new StringBuilder();
+		//
+		sbTitle.append(YmmConsts.SITE_NAME);
+		//
 		if (null == curArticleCate) {
-			sbTitle.append(ArticleCatePageMetaSetter.Common.getTitle()).append(YmmConsts.TITLE_DELIMETER)
-					.append(YmmConsts.SITE_NAME);
+			sbTitle.append(ArticleCatePageMetaSetter.Common.getTitle());
 			sbKeywords.append(ArticleCatePageMetaSetter.Common.getKeywords());
 			sbDescrption.append(ArticleCatePageMetaSetter.Common.getDescrption());
 		} else {
@@ -108,17 +111,16 @@ public class PageMetaUtil {
 			String cateNameForTitle = replaceName(curArticleCate.getName(), YmmConsts.TITLE_DELIMETER);
 			String cateNameForKeywords = replaceName(curArticleCate.getName(), YmmConsts.KEYWORDS_DELIMETER);
 			//
-			sbTitle.append(cateNameForTitle).append(YmmConsts.TITLE_DELIMETER);
+			sbTitle.append(cateNameForTitle);
 			sbKeywords.append(cateNameForKeywords);
 			//
 			ArticleCatePageMetaSetter pageMetaSetter = ArticleCatePageMetaSetter
 					.getEnumByCateId(curArticleCate.getId());
 			if (null != pageMetaSetter) {
-				sbTitle.append(pageMetaSetter.getTitle()).append(YmmConsts.TITLE_DELIMETER);
+				sbTitle.append(YmmConsts.TITLE_DELIMETER).append(pageMetaSetter.getTitle());
 				sbKeywords.append(YmmConsts.KEYWORDS_DELIMETER).append(pageMetaSetter.getKeywords());
 				sbDescrption.append(pageMetaSetter.getDescrption());
 			}
-			sbTitle.append(YmmConsts.SITE_NAME);
 		}
 		//
 		pageMeta.setTitle(sbTitle.toString());
@@ -138,12 +140,13 @@ public class PageMetaUtil {
 		StringBuilder sbKeywords = new StringBuilder();
 		StringBuilder sbDescrption = new StringBuilder();
 		//
+		sbTitle.append(YmmConsts.SITE_NAME);
+		//
 		if (null == article) {
-			sbTitle.append("孕妈妈").append(YmmConsts.TITLE_DELIMETER).append("购物攻略");
-			sbDescrption.append("孕妈妈").append(YmmConsts.TITLE_DELIMETER).append("购物攻略");
+			sbTitle.append("精品购物攻略");
+			sbDescrption.append("孕妈妈").append(YmmConsts.TITLE_DELIMETER).append("精品购物攻略");
 		} else {
-			sbTitle.append("精品购物攻略").append(YmmConsts.TITLE_DELIMETER).append(article.getTitle())
-					.append(YmmConsts.TITLE_DELIMETER);
+			sbTitle.append("精品购物攻略").append(YmmConsts.TITLE_DELIMETER).append(article.getTitle());
 			sbKeywords.append("精品购物攻略").append(YmmConsts.KEYWORDS_DELIMETER).append(article.getTitle());
 			//
 			List<String> keywordsList = article.keywordsList();
@@ -154,9 +157,6 @@ public class PageMetaUtil {
 				}
 			}
 		}
-		//
-		sbTitle.append(YmmConsts.TITLE_DELIMETER);
-		sbTitle.append(YmmConsts.SITE_NAME);
 		sbDescrption.append("孕妈妈为你推荐最精美的孕妇用商品,为您推荐最精美的购物攻略,祝您好孕！");
 		//
 		pageMeta.setTitle(sbTitle.toString());

@@ -25,15 +25,22 @@ public interface YmmArticleDAO {
 			+ YmmArticle.STATUS_NORMAL)
 	public YmmArticle getById(int id);
 
-	@SQL("SELECT " + FIELDS + " FROM " + YmmArticle.TABLE + " WHERE article_cate_id = :1" +
-			" ORDER BY rank ASC")
+	@SQL("SELECT " + FIELDS + " FROM " + YmmArticle.TABLE + " WHERE article_cate_id = :1"
+			+ " ORDER BY rank DESC, update_time DESC")
 	public List<YmmArticle> getListByCidAdmin(int articleCateId);
 
 	@SQL("SELECT " + FIELDS + " FROM " + YmmArticle.TABLE + " WHERE article_cate_id = :1 AND status = "
-			+ YmmArticle.STATUS_NORMAL + " ORDER BY rank ASC LIMIT :2")
+			+ YmmArticle.STATUS_NORMAL + " ORDER BY rank DESC, update_time DESC LIMIT :2")
 	public List<YmmArticle> getListByCid(int articleCateId, int limited);
 
-	@SQL("SELECT id, article_cate_id, title FROM " + YmmArticle.TABLE + " WHERE article_cate_id IN (:1)")
+	/**
+	 * 这个是网站地图用的，不排序
+	 * 
+	 * @param articleCateIdList
+	 * @return
+	 */
+	@SQL("SELECT id, article_cate_id, title FROM " + YmmArticle.TABLE + " WHERE article_cate_id IN (:1) "
+			+ " AND status = " + YmmArticle.STATUS_NORMAL)
 	public List<YmmArticle> getTitleListByCateIdList(List<Integer> articleCateIdList);
 
 	// ------------------------------------------------------

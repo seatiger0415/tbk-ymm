@@ -26,9 +26,9 @@ public class YmmArticleServiceImpl implements YmmArticleService {
 	}
 
 	@Override
-	public List<YmmArticle> getListByArticleCateId(int articleCateId) {
+	public List<YmmArticle> getListByArticleCateId(int articleCateId, int limit) {
 		// TODO cache
-		return ymmArticleDAO.getListByCid(articleCateId, 1000);
+		return ymmArticleDAO.getListByCid(articleCateId, limit);
 	}
 
 	@Override
@@ -45,6 +45,10 @@ public class YmmArticleServiceImpl implements YmmArticleService {
 
 	// -----------------------------
 
+	/**
+	 * @param articleList
+	 * @return
+	 */
 	private Map<Integer, List<YmmArticle>> buildArticleMapByCateId(List<YmmArticle> articleList) {
 		Map<Integer, List<YmmArticle>> articleMap = Maps.newHashMap();
 		for (YmmArticle ymmArticle : articleList) {
@@ -66,5 +70,37 @@ public class YmmArticleServiceImpl implements YmmArticleService {
 		}
 		return articleCateIdList;
 	}
+	/**
+	 * @param articleList
+	 * @return
+	 */
+	/*
+	 * private void sortByRankAndUpTime(List<YmmArticle> articleList) {
+	 * Collections.sort(articleList, new Comparator<YmmArticle>() {
+	 * 
+	 * @Override
+	 * public int compare(YmmArticle article1, YmmArticle article2) {
+	 * int rank = article2.getRank() - article1.getRank();
+	 * if (rank != 0) {
+	 * return rank;
+	 * }
+	 * //
+	 * Date upTime1 = article1.getUpdateTime();
+	 * Date upTime2 = article2.getUpdateTime();
+	 * if (null == upTime1 && null == upTime2) {
+	 * return 0;
+	 * }
+	 * //
+	 * if (upTime1 == null) {
+	 * return 1;
+	 * }
+	 * if (upTime2 == null) {
+	 * return -1;
+	 * }
+	 * return (int) (upTime2.getTime() - upTime1.getTime());
+	 * }
+	 * });
+	 * }
+	 */
 
 }
