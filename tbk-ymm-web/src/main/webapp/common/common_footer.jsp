@@ -34,7 +34,8 @@
 							<a href="http://www.mogujie.com/" target="_blank">蘑菇街</a>	
 							<a href="http://www.babytree.com/" target="_blank" title="宝宝树 - 怀孕 育儿 大型育儿网站社区">宝宝树</a>
 							<a href="http://bbs.ci123.com/" target="_blank" title="育儿论坛 - 育儿网">育儿网</a>	
-							<a href="http://www.ttuu.com/" target="_blank" title="推优网-免费收录各类优秀网站的中文网站目录">推优网</a>
+							<!--  
+							<a href="http://www.ttuu.com/" target="_blank" title="推优网-免费收录各类优秀网站的中文网站目录">推优网</a>-->
 						</li>						
 					</ul>				
 					<!-- 这个应该是轮播时用的。。具体什么作用呢? 
